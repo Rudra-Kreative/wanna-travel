@@ -39,18 +39,30 @@
             </li>
             <li class="nav-item ">
                 <a href="#" class="nav-link ">
-                    <i class="fas fa-list-alt"></i>
+                    <i class="fas fa-hotel"></i>
                     <p>
-                        Categories
+                        Hotels
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
 
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="fas fa-eye nav-icon"></i>
-                            <p>Show</p>
+                        <a href="{{ route('administrator.hotel.type.home') }}" class="nav-link">
+                            <i class="fas fa-building"></i>
+                            <p>Type</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.hotel.property.home') }}" class="nav-link">
+                            <i class="fas fa-door-closed"></i>
+                            <p>Property Type</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.hotel.home') }}" class="nav-link">
+                            <i class="fas fa-door-closed"></i>
+                            <p>List</p>
                         </a>
                     </li>
                 </ul>
