@@ -68,6 +68,31 @@
                 </ul>
             </li>
             
+            <li class="nav-item ">
+                <a href="#" class="nav-link ">
+                    <i class="fas fa-edit"></i>
+                    <p>
+                        Pages
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.pages.home',['name'=>'home']) }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>About</p>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
            
         </ul>
     </nav>

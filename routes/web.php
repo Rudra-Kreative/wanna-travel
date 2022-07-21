@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelTypeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyTypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,16 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
         
         //hotel
         Route::get('/',[HotelController::class,'index'])->name('home');
+
+    });
+
+
+    //pages
+    Route::prefix('pages')->name('pages.')->group(function(){
+
+        Route::get('/',[PageController::class,'index'])->name('home');
+        Route::post('/store',[PageController::class,'store'])->name('store');
+        Route::put('/{page}/update',[PageController::class,'update'])->name('update');
 
     });
 });
