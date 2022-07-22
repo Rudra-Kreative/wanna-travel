@@ -442,25 +442,7 @@
                                 @enderror
                             </div>
 
-                            {{-- <div class="form-group">
-                                <label for="name">Section Four Destination</label>
-                                <div class="row">
-                                    @foreach ($data['countryList'] as $eachData)
-                                        <div class="col-md-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" name="destination_country[]"
-                                                    id="destination_country" type="checkbox"
-                                                    value="{{ $eachData['code'] }}"
-                                                    {{ !empty($data['templates']->contents->destination_country) ? (in_array($eachData['code'], $data['templates']->contents->destination_country) ? 'checked' : '') : '' }}>
-                                                <label class="form-check-label">{{ $eachData['name'] }}</label>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                @error('destination_country')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div> --}}
+                           
                             <div class="form-group">
                                 <label>Section Four Destinations</label>
                                 <div class="select2-purple">
