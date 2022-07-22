@@ -159,10 +159,7 @@
                             <div class="form-group">
                                 <label for="name">Section Text</label>
                                 <textarea name="section_1_text" id="section_1_text" cols="70" rows="5" placeholder="Enter section text"
-                                    class="form-control">
-                                    {!! old('section_1_text') ??
-                                        (!empty($data['templates']->contents->section_1_text) ? $data['templates']->contents->section_1_text : '') !!}
-                                </textarea>
+                                    class="form-control">{!! old('section_1_text')??(!empty($data['templates']->contents->section_1_text) ? $data['templates']->contents->section_1_text : '') !!}</textarea>
                                 @error('section_1_text')
                                     <span style="color: red">{{ $message }}</span>
                                 @enderror
@@ -255,10 +252,7 @@
                             <div class="form-group">
                                 <label for="name">Section Text</label>
                                 <textarea name="section_2_text" id="section_2_text" cols="70" rows="5" placeholder="Enter section text"
-                                    class="form-control">
-                                {!! old('section_2_text') ??
-                                    (!empty($data['templates']->contents->section_2_text) ? $data['templates']->contents->section_2_text : '') !!}
-                                </textarea>
+                                    class="form-control">{!! old('section_2_text') ??(!empty($data['templates']->contents->section_2_text) ? $data['templates']->contents->section_2_text : '') !!}</textarea>
                                 @error('section_2_text')
                                     <span style="color: red">{{ $message }}</span>
                                 @enderror
@@ -326,11 +320,8 @@
                             <div class="form-group">
                                 <label for="name">Section Text</label>
                                 <textarea name="section_3_text" id="section_2_text" cols="70" rows="5" placeholder="Enter section text"
-                                    class="form-control">
-                                    {!! old('section_3_text') ??
-                                        (!empty($data['templates']->contents->section_3_text) ? $data['templates']->contents->section_3_text : '') !!}
-                                </textarea>
-                                </textarea>
+                                    class="form-control">{!! old('section_3_text') ??(!empty($data['templates']->contents->section_3_text) ? $data['templates']->contents->section_3_text : '') !!}</textarea>
+                                
                                 @error('section_3_text')
                                     <span style="color: red">{{ $message }}</span>
                                 @enderror
