@@ -60,7 +60,7 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
 
         Route::get('/',[PageController::class,'index'])->name('home');
         Route::post('/store',[PageController::class,'store'])->name('store');
-        Route::put('/{page}/update',[PageController::class,'update'])->name('update');
+        Route::put('/{page:slug}/update',[PageController::class,'update'])->name('update');
 
     });
 });

@@ -213,6 +213,7 @@ class PageController extends Controller
         try {
             $createdContent = Page::create([
                 'name' => $request->page_indentifier,
+                'slug' => 'home',
                 'contents' => json_encode($temlateArray)
             ]);
 
@@ -418,6 +419,7 @@ class PageController extends Controller
             } else {
                 $createdPage = Page::create([
                     'name' => 'faq',
+                    'slug' => 'faq',
                     'contents' => json_encode($templates)
                 ]);
             }
@@ -510,7 +512,7 @@ class PageController extends Controller
 
         if ($media instanceof UploadedFile) {
             $fileData = $this->uploads($media, $path);
-
+            
             if (!empty($fileData['filePath'])) {
                 $mediaArr[] = $fileData;
             }
