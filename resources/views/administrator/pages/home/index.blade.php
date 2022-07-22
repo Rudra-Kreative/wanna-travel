@@ -49,7 +49,7 @@
 
                 <div id="property_type_form_div">
                     <form
-                        action="{{ $data['data_method'] == 'update' ? route('administrator.pages.update',[$data['templates']->id]) : route('administrator.pages.store') }}"
+                        action="{{ $data['data_method'] == 'update' ? route('administrator.pages.update',[$data['templates']->slug]) : route('administrator.pages.store') }}"
                         method="POST" enctype="multipart/form-data">
                         {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
                         <input type="hidden" name="data_method" value="{{ $data['data_method'] ?? 'create' }}">
