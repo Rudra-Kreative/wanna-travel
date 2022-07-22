@@ -72,7 +72,7 @@
                 <a href="#" class="nav-link ">
                     <i class="fas fa-edit"></i>
                     <p>
-                        Pages
+                        CMS
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>

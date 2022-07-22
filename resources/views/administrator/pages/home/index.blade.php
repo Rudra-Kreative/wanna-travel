@@ -1,5 +1,6 @@
 <x-administrator-app-layout>
     <x-slot name="addOnCss">
+
         <style>
             .previewImg {
                 width: 100%;
@@ -441,7 +442,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="name">Section Four Destination</label>
                                 <div class="row">
                                     @foreach ($data['countryList'] as $eachData)
@@ -459,7 +460,20 @@
                                 @error('destination_country')
                                     <span style="color: red">{{ $message }}</span>
                                 @enderror
-                            </div>
+                            </div> --}}
+                            <div class="form-group">
+                                <label>Section Four Destinations</label>
+                                <div class="select2-purple">
+                                  <select class="select2" multiple="multiple" name="destination_country[]" data-placeholder="Select upto Four Country" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                    @foreach ($data['countryList'] as $eachData)
+                                        <option value="{{ $eachData['code'] }}"
+                                        {{ !empty($data['templates']->contents->destination_country) ? (in_array($eachData['code'], $data['templates']->contents->destination_country) ? 'selected' : '') : '' }}
+                                        >{{ $eachData['name'] }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
+                            
 
                             <div class="form-group">
                                 <label for="slug">Section Destination Images (can select upto four in assending
@@ -572,5 +586,8 @@
         @elseif (!empty($data['data_method']) && $data['data_method'] == 'update')
             <script src="{{ asset('admin/dist/js/pages/page-home-update.js') }}"></script>
         @endif
+        <script type="text/javascript">
+            $('.select2').select2();
+        </script>
     </x-slot>
 </x-administrator-app-layout>

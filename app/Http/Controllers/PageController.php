@@ -443,7 +443,6 @@ class PageController extends Controller
         if(!empty($page->contents))
         {
             $oldPageContents = json_decode($page->contents);
-            //dd($oldPageContents);
 
             foreach ($oldPageContents as $content) {
                 if($content->ques == $request->old_ques)

@@ -1,3 +1,4 @@
+
 $(document).on('click','.bootstrap-switch',function(){
     $(this).toggleClass('bootstrap-switch-on bootstrap-switch-off');
     if($(this).hasClass('bootstrap-switch-on'))
