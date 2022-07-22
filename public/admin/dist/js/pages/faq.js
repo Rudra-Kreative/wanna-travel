@@ -24,6 +24,9 @@ $(document).on('change', '#faq_ques', function () {
         $('#faq_button').html('Create');
         $('#faq_button').attr('disabled',false);
         $('.fac_active_button').fadeIn(600);
+        $('.bootstrap-switch').addClass('bootstrap-switch-on');
+        $('.bootstrap-switch-container').css('margin-left','0px');
+        $( "#faq-active-checkbox" ).prop( "checked", true );
         $('.ques_answer_div').fadeIn(600);
     }
     else if ($(this).val() !== '' && $(this).val() !== 'undefined') {
