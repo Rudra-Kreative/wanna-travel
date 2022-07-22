@@ -25,7 +25,7 @@ class PageController extends Controller
         if (!empty($request->name)) {
 
             $requestedView = $this->getView($request->name);
-
+            //dd($requestedView);
             if (!empty($requestedView)) {
                 return view($requestedView['view'], ['data' => $requestedView['data']]);
             } else {
@@ -49,13 +49,22 @@ class PageController extends Controller
                         throw new ModelNotFoundException();
                     }
                     break;
+                case 'faq':
 
+                    $requestedView = $this->createFAQ($request);
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
                 default:
                     # code...
                     break;
             }
         }
     }
+
 
     public function update(Request $request, Page $page)
     {
@@ -71,7 +80,14 @@ class PageController extends Controller
                     }
                     //return $this->handleHomePage($request,$page);
                     break;
-
+                case 'faq':
+                    $requestedView = $this->updateFAQ($request,$page);
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
                 default:
                     # code...
                     break;
@@ -255,7 +271,7 @@ class PageController extends Controller
         if (!empty($request->selected_banner_image)) {
             $selected_banner_image = json_decode($request->selected_banner_image);
             $existingBannerArr = $existingPageContents->banner_media;
-            
+
             $existingBanner = [];
             foreach ($existingBannerArr as $key => $value) {
 
@@ -275,7 +291,7 @@ class PageController extends Controller
                     if (!empty($val) && (in_array($val->getClientOriginalName(), $selected_banner_image)) && (!in_array($val->getClientOriginalName(), $existingBanner)))
                         $bannerMedia[] = $this->uploadMedia($val, 'pages/home/banner_media/');
                 }
-               
+
                 foreach ($existingBannerArr as $key => $value) {
                     $bannerMedia[count($bannerMedia)] = $val[0];
                 }
@@ -368,6 +384,89 @@ class PageController extends Controller
         return $this->getView('home');
     }
 
+
+    public function createFAQ($request)
+    {
+        $this->validate($request, [
+            'ques' => 'required',
+            'answer' => 'required',
+            'is_active' => 'required'
+        ]);
+
+        
+        $templates = [
+            [
+            'ques' => $request->ques,
+            'answer' => $request->answer,
+            'is_active' => $request->is_active
+            ]
+        ];
+
+
+        try {
+            $existingTemplates = Page::where('name', 'faq')->first();
+            if (!empty($existingTemplates->contents)) {
+                
+                $existingTemplates->contents = json_decode($existingTemplates->contents);
+               
+                $existingTemplates->contents = array_merge($existingTemplates->contents,$templates);
+              
+                $existingTemplates->contents = json_encode($existingTemplates->contents);
+                
+                $createdPage = $existingTemplates->save();
+                
+            } else {
+                $createdPage = Page::create([
+                    'name' => 'faq',
+                    'contents' => json_encode($templates)
+                ]);
+            }
+
+
+            return $this->getView('faq');
+        } catch (Exception $e) {
+            dd($e);
+        }
+
+        return $this->getView('faq');
+    }
+
+    public function updateFAQ($request , $page)
+    {
+        $this->validate($request,[
+            'ques' => 'required',
+            'answer' => 'required',
+            'old_ques' => 'required',
+            'is_active' => 'required'
+        ]);
+
+        if(!empty($page->contents))
+        {
+            $oldPageContents = json_decode($page->contents);
+            //dd($oldPageContents);
+
+            foreach ($oldPageContents as $content) {
+                if($content->ques == $request->old_ques)
+                {
+                    $content->ques = $request->ques;
+                    $content->answer = $request->answer;
+                    $content->is_active = $request->is_active;
+                    break;
+                }
+            }
+
+            $page->contents = json_encode($oldPageContents);
+            
+            try {
+                $page->save();
+            } catch (Exception $e) {
+                dd($e);
+            }
+
+            return $this->getView('faq');
+
+        }
+    }
     public function getView(String $name)
     {
         switch ($name) {
@@ -375,7 +474,7 @@ class PageController extends Controller
                 $templates =  Page::where('name', 'home')->first();
 
                 (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
-                //dd($templates->contents);
+                
                 return [
                     'view' => 'administrator.pages.home.index',
                     'data' => [
@@ -386,7 +485,19 @@ class PageController extends Controller
 
                 ];
                 break;
+            case 'faq':
+                $templates =  Page::where('name', 'faq')->first();
+                (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
+                //dd($templates->contents);
+                return [
+                    'view' => 'administrator.pages.faq.index',
+                    'res' => true,
+                    'data' => [
+                        'templates' => $templates,
+                    ],
 
+                ];
+                break;
             default:
                 return '';
                 break;
