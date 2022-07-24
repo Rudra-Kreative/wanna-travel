@@ -51,7 +51,7 @@
                     <form
                         action="{{ $data['data_method'] == 'update' ? route('administrator.pages.update',[$data['templates']->slug]) : route('administrator.pages.store') }}"
                         method="POST" enctype="multipart/form-data">
-                        {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <input type="hidden" name="data_method" value="{{ $data['data_method'] ?? 'create' }}">
                         <input type="hidden" name="page_indentifier" value="home">
                         @if ($data['data_method'] == 'update')
@@ -134,7 +134,12 @@
                                                                 style='font-size:48px;color:rgb(118, 223, 136);cursor: pointer;'
                                                                 title="Add Image"></i>
                                                         </div>
+
+                                                        @error('updated_banner_images')
+                                                            <span style="color: red">{{ $message }}</span>
+                                                        @enderror
                                                 @endif
+
                                             </div>
                                         </div>
                                     @endif

@@ -56,7 +56,7 @@ $(document).on('change', '#faq_ques', function () {
 
             $('#ques').val(this_ques);
             $('#answer').val(this_answer);
-            $('#faq_form').attr('data-action', '/administrator/pages/' + $('#faq_form').attr('data-id') + '/update');
+            $('#faq_form').attr('data-action', '/administrator/pages/' + $('#faq_form').attr('data-slug') + '/update');
             $('#faq_button').attr('data-method', 'update');
             $('#faq_button').html('Update');
             $('#faq_button').attr('disabled',false);
@@ -145,6 +145,12 @@ function createFaq() {
 
                     $('#ques').val('');
                     $('#answer').val('');
+                    $('#faq_form').attr('data-action', '');
+                    $('#faq_button').attr('data-method', '');
+                    $('#faq_button').html('No action permitted');
+                    $('#faq_button').attr('disabled',true);
+                    $('.fac_active_button').fadeOut(600);
+                    $('.ques_answer_div').fadeOut(600);
                     $('#faq_data').val(JSON.stringify(response.data.templates.contents));
                     $('#faq_ques').html(appendableQues);
                     Toast.fire({

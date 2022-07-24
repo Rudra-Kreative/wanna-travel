@@ -262,10 +262,10 @@ class PageController extends Controller
             'section_3_image' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,image/webp | max:50048',
             'section_4_image' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,image/webp | max:50048',
             'section_4_destination_image.*' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,image/webp | max:50048',
-            'updated_banner_images.*' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,image/webp | max:50048',
+            'updated_banner_images.*' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,images/jpg,image/webp | max:50048',
             'selected_banner_image' => 'required'
         ]);
-
+        
         $existingPageContents = json_decode($page->contents);
 
         //update banner media
@@ -292,9 +292,15 @@ class PageController extends Controller
                     if (!empty($val) && (in_array($val->getClientOriginalName(), $selected_banner_image)) && (!in_array($val->getClientOriginalName(), $existingBanner)))
                         $bannerMedia[] = $this->uploadMedia($val, 'pages/home/banner_media/');
                 }
-
+                
                 foreach ($existingBannerArr as $key => $value) {
-                    $bannerMedia[count($bannerMedia)] = $val[0];
+                    
+                    $bannerMedia[count($bannerMedia)][] = [
+                        'fileName' => $value[0]->fileName,
+                        'fileType' => $value[0]->fileType,
+                        'filePath' => $value[0]->filePath,
+                        'fileSize' => $value[0]->fileSize
+                    ];
                 }
                 //array_push($bannerMedia,$existingBannerArr);
             } else {

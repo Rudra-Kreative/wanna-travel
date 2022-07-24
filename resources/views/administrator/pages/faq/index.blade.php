@@ -18,7 +18,7 @@
                     style="width: 100px">Create</button> --}}
 
                 <div id="hotel_type_form_div" style="display:block">
-                    <form action="javscrip:void(0)" id="faq_form" data-id="{{ $data['templates']->id }}" data-action=""
+                    <form action="javscrip:void(0)" id="faq_form" data-slug="{{ $data['templates']->slug ?? null }}" data-action=""
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="page_indentifier" id="page_indentifier" value="faq">
@@ -86,7 +86,9 @@
 
         </div><!-- /.row -->
         <input type="hidden" name="faq_data" id="faq_data"
-            value="{{ $data['templates']->contents ? json_encode($data['templates']->contents) : null }}">
+        value="{{ !empty($data['templates']->contents) ? json_encode($data['templates']->contents) : null }}">
+       
+        
     </x-slot>
 
 
