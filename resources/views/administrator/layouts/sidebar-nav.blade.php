@@ -79,19 +79,19 @@
 
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('administrator.pages.home',['name'=>'home']) }}" class="nav-link">
+                        <a href="{{ route('administrator.pages.home',['slug'=>'home']) }}" class="nav-link">
                             <i class="fas fa-angle-double-right"></i>
                             <p>Home</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('administrator.pages.home',['name'=>'faq']) }}" class="nav-link">
+                        <a href="{{ route('administrator.pages.home',['slug'=>'faq']) }}" class="nav-link">
                             <i class="fas fa-angle-double-right"></i>
                             <p>FAQ</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('administrator.pages.home',['name'=>'faq']) }}" class="nav-link">
+                        <a href="{{ route('administrator.pages.home',['slug'=>'is_wanna_for_me']) }}" class="nav-link">
                             <i class="fas fa-angle-double-right"></i>
                             <p>Is Wanna For Me?</p>
                         </a>

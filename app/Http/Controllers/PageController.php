@@ -19,18 +19,21 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required']
+            'slug' => ['required']
         ]);
 
-        if (!empty($request->name)) {
 
-            $requestedView = $this->getView($request->name);
-            //dd($requestedView);
+        if (!empty($request->slug)) {
+
+            $requestedView = $this->getView($request->slug);
+
             if (!empty($requestedView)) {
                 return view($requestedView['view'], ['data' => $requestedView['data']]);
             } else {
                 throw new ModelNotFoundException();
             }
+        } else {
+            throw new ModelNotFoundException();
         }
     }
 
@@ -52,6 +55,15 @@ class PageController extends Controller
                 case 'faq':
 
                     $requestedView = $this->createFAQ($request);
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+                case 'is_wanna_for_me':
+
+                    $requestedView = $this->createIsWannaForMe($request);
                     if (!empty($requestedView)) {
                         return  ['data' => $requestedView['data']];
                     } else {
@@ -81,7 +93,15 @@ class PageController extends Controller
                     //return $this->handleHomePage($request,$page);
                     break;
                 case 'faq':
-                    $requestedView = $this->updateFAQ($request,$page);
+                    $requestedView = $this->updateFAQ($request, $page);
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+                case 'is_wanna_for_me':
+                    $requestedView = $this->updateIsWannaForMe($request, $page);
                     if (!empty($requestedView)) {
                         return  ['data' => $requestedView['data']];
                     } else {
@@ -220,14 +240,11 @@ class PageController extends Controller
             if (!empty($createdContent->id)) {
 
                 return $this->getView($request->page_indentifier);
-                
             } else {
             }
         } catch (Exception $e) {
             dd($e);
         }
-
-
     }
 
 
@@ -265,7 +282,7 @@ class PageController extends Controller
             'updated_banner_images.*' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,images/jpg,image/webp | max:50048',
             'selected_banner_image' => 'required'
         ]);
-        
+
         $existingPageContents = json_decode($page->contents);
 
         //update banner media
@@ -292,9 +309,9 @@ class PageController extends Controller
                     if (!empty($val) && (in_array($val->getClientOriginalName(), $selected_banner_image)) && (!in_array($val->getClientOriginalName(), $existingBanner)))
                         $bannerMedia[] = $this->uploadMedia($val, 'pages/home/banner_media/');
                 }
-                
+
                 foreach ($existingBannerArr as $key => $value) {
-                    
+
                     $bannerMedia[count($bannerMedia)][] = [
                         'fileName' => $value[0]->fileName,
                         'fileType' => $value[0]->fileType,
@@ -400,28 +417,27 @@ class PageController extends Controller
             'is_active' => 'required'
         ]);
 
-        
+
         $templates = [
             [
-            'ques' => $request->ques,
-            'answer' => $request->answer,
-            'is_active' => $request->is_active
+                'ques' => $request->ques,
+                'answer' => $request->answer,
+                'is_active' => $request->is_active
             ]
         ];
 
 
         try {
-            $existingTemplates = Page::where('name', 'faq')->first();
+            $existingTemplates = Page::where('slug', 'faq')->first();
             if (!empty($existingTemplates->contents)) {
-                
+
                 $existingTemplates->contents = json_decode($existingTemplates->contents);
-               
-                $existingTemplates->contents = array_merge($existingTemplates->contents,$templates);
-              
+
+                $existingTemplates->contents = array_merge($existingTemplates->contents, $templates);
+
                 $existingTemplates->contents = json_encode($existingTemplates->contents);
-                
+
                 $createdPage = $existingTemplates->save();
-                
             } else {
                 $createdPage = Page::create([
                     'name' => 'faq',
@@ -439,22 +455,20 @@ class PageController extends Controller
         return $this->getView('faq');
     }
 
-    public function updateFAQ($request , $page)
+    public function updateFAQ($request, $page)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'ques' => 'required',
             'answer' => 'required',
             'old_ques' => 'required',
             'is_active' => 'required'
         ]);
 
-        if(!empty($page->contents))
-        {
+        if (!empty($page->contents)) {
             $oldPageContents = json_decode($page->contents);
 
             foreach ($oldPageContents as $content) {
-                if($content->ques == $request->old_ques)
-                {
+                if ($content->ques == $request->old_ques) {
                     $content->ques = $request->ques;
                     $content->answer = $request->answer;
                     $content->is_active = $request->is_active;
@@ -463,7 +477,7 @@ class PageController extends Controller
             }
 
             $page->contents = json_encode($oldPageContents);
-            
+
             try {
                 $page->save();
             } catch (Exception $e) {
@@ -471,17 +485,126 @@ class PageController extends Controller
             }
 
             return $this->getView('faq');
-
         }
     }
-    public function getView(String $name)
+
+    public function createIsWannaForMe($request)
     {
-        switch ($name) {
+        $this->validate($request, [
+            'this_sec' => 'required',
+            'section_text' => 'required',
+            'section_image' => 'required | mimetypes:image/bmp,image/gif,image/png,image/jpeg,images/jpg,image/webp | max:50048'
+        ]);
+
+
+
+        try {
+            $existingTemplates = Page::where('slug', 'is_wanna_for_me')->first();
+
+            if (!empty($existingTemplates->contents)) {
+
+                if ($request->hasFile('section_image')) {
+                    $section_image = $this->uploadMedia($request->section_image, 'pages/is_wanna_for_me/section_image/' . $request->this_sec . '/');
+                }
+
+                $templates = [
+                    [
+                        'section' => $request->this_sec,
+                        'section_text' => $request->section_text,
+                        'section_image' => $section_image
+                    ]
+                ];
+
+                $existingTemplates->contents = json_decode($existingTemplates->contents);
+
+                $existingTemplates->contents = array_merge($existingTemplates->contents, $templates);
+
+                $existingTemplates->contents = json_encode($existingTemplates->contents);
+
+                $createdPage = $existingTemplates->save();
+            } else {
+                if ($request->hasFile('section_image')) {
+                    $section_image = $this->uploadMedia($request->section_image, 'pages/is_wanna_for_me/section_image/' . $request->this_sec . '/');
+                }
+
+                $templates = [
+                    [
+                        'section' => $request->this_sec,
+                        'section_text' => $request->section_text,
+                        'section_image' => $section_image
+                    ]
+                ];
+
+                $createdPage = Page::create([
+                    'name' => 'Is Wanna For Me',
+                    'slug' => 'is_wanna_for_me',
+                    'contents' => json_encode($templates)
+                ]);
+            }
+
+            return $this->getView('is_wanna_for_me');
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
+
+
+    public function updateIsWannaForMe($request,$page)
+    {
+        $this->validate($request, [
+            'this_sec' => 'required',
+            'section_text' => 'required',
+            'section_image' => 'nullable | mimetypes:image/bmp,image/gif,image/png,image/jpeg,images/jpg,image/webp | max:50048'
+        ]);
+
+        try {
+            
+
+            if (!empty($page->contents)) {
+                $oldPageContents = json_decode($page->contents);
+                foreach ($oldPageContents as $oldPageContent) {
+                    
+                    if ($oldPageContent->section == $request->this_sec) {
+                        if ($request->hasFile('section_image')) {
+                            $section_image = $this->uploadMedia($request->section_image, 'pages/is_wanna_for_me/section_image/' . $request->this_sec . '/');
+
+                            if (!empty($section_image)) {
+                                if (Storage::exists('public/' . substr($oldPageContent->section_image[0]->filePath, strpos($oldPageContent->section_image[0]->filePath, '/') + 1))) {
+                                    Storage::delete('public/' . substr($oldPageContent->section_image[0]->filePath, strpos($oldPageContent->section_image[0]->filePath, '/') + 1));
+                                }
+                            }
+
+                            $oldPageContent->section_image = $section_image;
+
+                        }
+                            
+                        $oldPageContent->section_text = $request->section_text;
+
+                        break;
+                    }
+                }
+
+                $page->contents = json_encode($oldPageContents);
+                $page->save();
+
+                
+            }
+
+            return $this->getView('is_wanna_for_me');
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
+
+    public function getView(String $slug)
+    {
+
+        switch ($slug) {
             case 'home':
-                $templates =  Page::where('name', 'home')->first();
+                $templates =  Page::where('slug', 'home')->first();
 
                 (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
-                
+
                 return [
                     'view' => 'administrator.pages.home.index',
                     'data' => [
@@ -493,11 +616,23 @@ class PageController extends Controller
                 ];
                 break;
             case 'faq':
-                $templates =  Page::where('name', 'faq')->first();
+                $templates =  Page::where('slug', 'faq')->first();
                 (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
                 //dd($templates->contents);
                 return [
                     'view' => 'administrator.pages.faq.index',
+                    'res' => true,
+                    'data' => [
+                        'templates' => $templates,
+                    ],
+
+                ];
+                break;
+            case 'is_wanna_for_me':
+                $templates =  Page::where('slug', 'is_wanna_for_me')->first();
+                (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
+                return [
+                    'view' => 'administrator.pages.is_wanna_for_me.index',
                     'res' => true,
                     'data' => [
                         'templates' => $templates,
@@ -518,7 +653,7 @@ class PageController extends Controller
 
         if ($media instanceof UploadedFile) {
             $fileData = $this->uploads($media, $path);
-            
+
             if (!empty($fileData['filePath'])) {
                 $mediaArr[] = $fileData;
             }
