@@ -29,11 +29,11 @@
 
                                 <select name="section_select" id="section_select" class="form-control">
                                     <option value="" selected>Select a section</option>
-                                    <option value="sec_one" selected>Section One</option>
-                                    <option value="sec_two" selected>Section Two</option>
-                                    <option value="sec_three" selected>Section Three</option>
-                                    <option value="sec_four" selected>Section Four</option>
-                                    <option value="sec_five" selected>Section Five</option>
+                                    <option value="sec_one" >Section One</option>
+                                    <option value="sec_two" >Section Two</option>
+                                    <option value="sec_three" >Section Three</option>
+                                    <option value="sec_four" >Section Four</option>
+                                    <option value="sec_five" >Section Five</option>
 
                                     {{-- <optgroup label="Create ?">
                                         <option value="create">Create a new one +</option>

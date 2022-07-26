@@ -96,6 +96,12 @@
                             <p>Is Wanna For Me?</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.pages.home',['slug'=>'contact']) }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Contact Us</p>
+                        </a>
+                    </li>
                     
                 </ul>
             </li>

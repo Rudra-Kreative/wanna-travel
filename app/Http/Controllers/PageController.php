@@ -39,7 +39,6 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
-
         if (!empty($request->page_indentifier)) {
             switch ($request->page_indentifier) {
                 case 'home':
@@ -66,6 +65,15 @@ class PageController extends Controller
                     $requestedView = $this->createIsWannaForMe($request);
                     if (!empty($requestedView)) {
                         return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+                case 'contact':
+
+                    $requestedView = $this->createContactPage($request);
+                    if (!empty($requestedView)) {
+                        return view($requestedView['view'], ['data' => $requestedView['data']]);
                     } else {
                         throw new ModelNotFoundException();
                     }
@@ -103,7 +111,15 @@ class PageController extends Controller
                 case 'is_wanna_for_me':
                     $requestedView = $this->updateIsWannaForMe($request, $page);
                     if (!empty($requestedView)) {
-                        return  ['data' => $requestedView['data']];
+                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+                case 'contact':
+                    $requestedView = $this->updateContact($request, $page);
+                    if (!empty($requestedView)) {
+                        return view($requestedView['view'], ['data' => $requestedView['data']]);
                     } else {
                         throw new ModelNotFoundException();
                     }
@@ -549,7 +565,7 @@ class PageController extends Controller
     }
 
 
-    public function updateIsWannaForMe($request,$page)
+    public function updateIsWannaForMe($request, $page)
     {
         $this->validate($request, [
             'this_sec' => 'required',
@@ -558,12 +574,12 @@ class PageController extends Controller
         ]);
 
         try {
-            
+
 
             if (!empty($page->contents)) {
                 $oldPageContents = json_decode($page->contents);
                 foreach ($oldPageContents as $oldPageContent) {
-                    
+
                     if ($oldPageContent->section == $request->this_sec) {
                         if ($request->hasFile('section_image')) {
                             $section_image = $this->uploadMedia($request->section_image, 'pages/is_wanna_for_me/section_image/' . $request->this_sec . '/');
@@ -575,9 +591,8 @@ class PageController extends Controller
                             }
 
                             $oldPageContent->section_image = $section_image;
-
                         }
-                            
+
                         $oldPageContent->section_text = $request->section_text;
 
                         break;
@@ -586,14 +601,67 @@ class PageController extends Controller
 
                 $page->contents = json_encode($oldPageContents);
                 $page->save();
-
-                
             }
 
             return $this->getView('is_wanna_for_me');
         } catch (Exception $e) {
             dd($e);
         }
+    }
+
+    public function createContactPage($request)
+    {
+        $this->validate($request, [
+            'heading' => 'required',
+            'maps_url' => 'required | url'
+        ]);
+
+        try {
+
+            $templates = [
+                [
+                    'heading' => $request->heading,
+                    'maps_url' => $request->maps_url
+                ]
+            ];
+
+
+            Page::create([
+                'name' => 'Contact',
+                'slug' => 'contact',
+                'contents' => json_encode($templates)
+            ]);
+        } catch (Exception $e) {
+            dd($e);
+        }
+
+        return $this->getView('contact');
+    }
+
+    public function updateContact($request , $page)
+    {
+        $this->validate($request, [
+            'heading' => 'required',
+            'maps_url' => 'required | url'
+        ]);
+
+        if(!empty($page->contents))
+        {
+            $oldPageContents = json_decode($page->contents);
+            $oldPageContents[0]->heading = $request->heading;
+            $oldPageContents[0]->maps_url = $request->maps_url;
+            $page->contents = json_encode($oldPageContents);
+            try {
+                $page->save();
+
+            } catch (Exception $e) {
+                dd($e);
+            }
+
+
+        }
+
+        return $this->getView('contact');
     }
 
     public function getView(String $slug)
@@ -636,6 +704,19 @@ class PageController extends Controller
                     'res' => true,
                     'data' => [
                         'templates' => $templates,
+                    ],
+
+                ];
+                break;
+            case 'contact':
+                $templates =  Page::where('slug', 'contact')->first();
+                (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
+                return [
+                    'view' => 'administrator.pages.contact.index',
+                    'res' => true,
+                    'data' => [
+                        'templates' => $templates,
+                        'data_method' => !empty($templates->contents) ? 'update' : 'create'
                     ],
 
                 ];
