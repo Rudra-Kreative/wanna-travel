@@ -78,6 +78,22 @@
     @include('administrator.layouts.js.common-js')
     {{-- Use page wise dynamic js using slot name --}}
     {{ $addOnJs }}
+    @if (session()->has('success'))
+        <script type="text/javascript">
+            Toast.fire({
+                icon: 'success',
+                title: "{{ session('success') }}"
+            })
+        </script>
+    @endif
+    @if (session()->has('fail'))
+        <script type="text/javascript">
+            Toast.fire({
+                icon: 'fail',
+                title: "{{ session('fail') }}"
+            })
+        </script>
+    @endif
 </body>
 
 </html>
