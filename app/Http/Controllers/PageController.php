@@ -46,7 +46,8 @@ class PageController extends Controller
                     $requestedView = $this->handleHomePage($request);
 
                     if (!empty($requestedView)) {
-                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+                        return redirect()->route('administrator.pages.home', ['slug' => $request->page_indentifier])
+                            ->with($requestedView['data']['response']['key'], $requestedView['data']['response']['message']);
                     } else {
                         throw new ModelNotFoundException();
                     }
@@ -94,14 +95,17 @@ class PageController extends Controller
                     $requestedView = $this->handleHomePage($request, $page);
 
                     if (!empty($requestedView)) {
-                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+
+                        return redirect()->route('administrator.pages.home', ['slug' => $request->page_indentifier])
+                            ->with($requestedView['data']['response']['key'], $requestedView['data']['response']['message']);
                     } else {
                         throw new ModelNotFoundException();
                     }
-                    //return $this->handleHomePage($request,$page);
+
                     break;
                 case 'faq':
                     $requestedView = $this->updateFAQ($request, $page);
+                    
                     if (!empty($requestedView)) {
                         return  ['data' => $requestedView['data']];
                     } else {
@@ -111,15 +115,17 @@ class PageController extends Controller
                 case 'is_wanna_for_me':
                     $requestedView = $this->updateIsWannaForMe($request, $page);
                     if (!empty($requestedView)) {
-                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+                        return  ['data' => $requestedView['data']];
                     } else {
                         throw new ModelNotFoundException();
                     }
                     break;
                 case 'contact':
                     $requestedView = $this->updateContact($request, $page);
+
                     if (!empty($requestedView)) {
-                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+                        return redirect()->route('administrator.pages.home', ['slug' => $request->page_indentifier])
+                            ->with($requestedView['data']['response']['key'], $requestedView['data']['response']['message']);
                     } else {
                         throw new ModelNotFoundException();
                     }
@@ -246,6 +252,7 @@ class PageController extends Controller
             'section_5_image' => $section_5_image
         ];
 
+
         try {
             $createdContent = Page::create([
                 'name' => $request->page_indentifier,
@@ -255,12 +262,25 @@ class PageController extends Controller
 
             if (!empty($createdContent->id)) {
 
-                return $this->getView($request->page_indentifier);
+                $response = [
+                    'key' => 'success',
+                    'message' => 'Home page has been created successfully!!'
+                ];
             } else {
+
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Home page could not be created'
+                ];
             }
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'fail',
+                'message' => 'Home page could not be created'
+            ];
         }
+
+        return $this->getView($request->page_indentifier, $response);
     }
 
 
@@ -416,12 +436,27 @@ class PageController extends Controller
         $page->contents = json_encode($existingPageContents);
 
         try {
-            $page->save();
+            $isUpdated = $page->save();
+
+            if ($isUpdated) {
+                $response = [
+                    'key' => 'success',
+                    'message' => 'Home page has been updated successfully!!'
+                ];
+            } else {
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Home page could not be updated '
+                ];
+            }
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'fail',
+                'message' => 'Home page could not be updated '
+            ];
         }
 
-        return $this->getView('home');
+        return $this->getView('home', $response);
     }
 
 
@@ -454,21 +489,49 @@ class PageController extends Controller
                 $existingTemplates->contents = json_encode($existingTemplates->contents);
 
                 $createdPage = $existingTemplates->save();
+
+                if(!empty($createdPage))
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'FAQ has been added successfully!!'
+                    ];
+                }
+                else{
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'FAQ could not be added'
+                    ];
+                }
             } else {
                 $createdPage = Page::create([
                     'name' => 'faq',
                     'slug' => 'faq',
                     'contents' => json_encode($templates)
                 ]);
+
+                if(!empty($createdPage->id))
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'FAQ page has been created successfully!!'
+                    ];
+                }
+                else{
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'FAQ page could not be created'
+                    ];
+                }
             }
-
-
-            return $this->getView('faq');
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'fail',
+                'message' => 'FAQ could not be added'
+            ];
         }
 
-        return $this->getView('faq');
+        return $this->getView('faq',$response);
     }
 
     public function updateFAQ($request, $page)
@@ -481,6 +544,7 @@ class PageController extends Controller
         ]);
 
         if (!empty($page->contents)) {
+            
             $oldPageContents = json_decode($page->contents);
 
             foreach ($oldPageContents as $content) {
@@ -495,12 +559,30 @@ class PageController extends Controller
             $page->contents = json_encode($oldPageContents);
 
             try {
-                $page->save();
+                $isUpdated = $page->save();
+
+                if($isUpdated)
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'FAQ page has been updated successfully!!'
+                    ];
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'FAQ page could not be updated!!'
+                    ];
+                }
             } catch (Exception $e) {
-                dd($e);
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'FAQ page could not be updated!!'
+                ];
             }
 
-            return $this->getView('faq');
+            return $this->getView('faq',$response);
         }
     }
 
@@ -511,8 +593,6 @@ class PageController extends Controller
             'section_text' => 'required',
             'section_image' => 'required | mimetypes:image/bmp,image/gif,image/png,image/jpeg,images/jpg,image/webp | max:50048'
         ]);
-
-
 
         try {
             $existingTemplates = Page::where('slug', 'is_wanna_for_me')->first();
@@ -538,6 +618,21 @@ class PageController extends Controller
                 $existingTemplates->contents = json_encode($existingTemplates->contents);
 
                 $createdPage = $existingTemplates->save();
+
+                if($createdPage)
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'Section has been updated successfully!!'
+                    ];
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'Section could not be updated!!'
+                    ];
+                }
             } else {
                 if ($request->hasFile('section_image')) {
                     $section_image = $this->uploadMedia($request->section_image, 'pages/is_wanna_for_me/section_image/' . $request->this_sec . '/');
@@ -556,12 +651,32 @@ class PageController extends Controller
                     'slug' => 'is_wanna_for_me',
                     'contents' => json_encode($templates)
                 ]);
+
+                if(!empty($createdPage->id))
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'Page has been created successfully!!'
+                    ];
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'Page could not be created!!'
+                    ];
+                }
             }
 
-            return $this->getView('is_wanna_for_me');
+
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'success',
+                'message' => 'Section could not be created'
+            ];
         }
+
+        return $this->getView('is_wanna_for_me',$response);
     }
 
 
@@ -600,13 +715,40 @@ class PageController extends Controller
                 }
 
                 $page->contents = json_encode($oldPageContents);
-                $page->save();
+                $isUpdated = $page->save();
+
+                if($isUpdated)
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'Section has been updated successfully!!'
+                    ];
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'Section could not be updated!!'
+                    ];
+                }
+            }
+            else
+            {
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Section could not be updated!!'
+                ];
             }
 
-            return $this->getView('is_wanna_for_me');
+          
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'fail',
+                'message' => 'Section could not be updated!!'
+            ];
         }
+
+        return $this->getView('is_wanna_for_me',$response);
     }
 
     public function createContactPage($request)
@@ -626,45 +768,78 @@ class PageController extends Controller
             ];
 
 
-            Page::create([
+            $createdPage = Page::create([
                 'name' => 'Contact',
                 'slug' => 'contact',
                 'contents' => json_encode($templates)
             ]);
+
+            if(!empty($createdPage->id))
+            {
+                $response = [
+                    'key' => 'success',
+                    'message' => 'Contact page has been created successfully!!'
+                ];
+            }
+            else
+            {
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Contact page could not be created!!'
+                ];
+            }
         } catch (Exception $e) {
-            dd($e);
+            $response = [
+                'key' => 'fail',
+                'message' => 'Contact page could not be created!!'
+            ];
         }
 
-        return $this->getView('contact');
+        return $this->getView('contact',$response);
     }
 
-    public function updateContact($request , $page)
+    public function updateContact($request, $page)
     {
         $this->validate($request, [
             'heading' => 'required',
             'maps_url' => 'required | url'
         ]);
 
-        if(!empty($page->contents))
-        {
+        if (!empty($page->contents)) {
             $oldPageContents = json_decode($page->contents);
             $oldPageContents[0]->heading = $request->heading;
             $oldPageContents[0]->maps_url = $request->maps_url;
             $page->contents = json_encode($oldPageContents);
             try {
-                $page->save();
+                $isUpdated = $page->save();
+
+                if($isUpdated)
+                {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'Contact page has been updated successfully!!'
+                    ];
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => 'Contact page could not be updated updated!!'
+                    ];
+                }
 
             } catch (Exception $e) {
-                dd($e);
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Contact page could not be updated updated!!'
+                ];
             }
-
-
         }
 
-        return $this->getView('contact');
+        return $this->getView('contact',$response);
     }
 
-    public function getView(String $slug)
+    public function getView(String $slug, $resArray = [])
     {
 
         switch ($slug) {
@@ -678,7 +853,8 @@ class PageController extends Controller
                     'data' => [
                         'countryList' => $this->getCountryList(),
                         'templates' => $templates,
-                        'data_method' => !empty($templates->contents) ? 'update' : 'create'
+                        'data_method' => !empty($templates->contents) ? 'update' : 'create',
+                        'response' => $resArray
                     ],
 
                 ];
@@ -689,9 +865,9 @@ class PageController extends Controller
                 //dd($templates->contents);
                 return [
                     'view' => 'administrator.pages.faq.index',
-                    'res' => true,
                     'data' => [
                         'templates' => $templates,
+                        'response' => $resArray
                     ],
 
                 ];
@@ -704,6 +880,7 @@ class PageController extends Controller
                     'res' => true,
                     'data' => [
                         'templates' => $templates,
+                        'response' => $resArray
                     ],
 
                 ];
@@ -716,7 +893,8 @@ class PageController extends Controller
                     'res' => true,
                     'data' => [
                         'templates' => $templates,
-                        'data_method' => !empty($templates->contents) ? 'update' : 'create'
+                        'data_method' => !empty($templates->contents) ? 'update' : 'create',
+                        'response' => $resArray
                     ],
 
                 ];
