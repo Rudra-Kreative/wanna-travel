@@ -80,7 +80,7 @@ class PageController extends Controller
                     }
                     break;
                 default:
-                    # code...
+                    throw new ModelNotFoundException();
                     break;
             }
         }
@@ -131,7 +131,7 @@ class PageController extends Controller
                     }
                     break;
                 default:
-                    # code...
+                    throw new ModelNotFoundException();
                     break;
             }
         }
@@ -152,7 +152,7 @@ class PageController extends Controller
                     break;
 
                 default:
-                    # code...
+                    throw new ModelNotFoundException();
                     break;
             }
         }
