@@ -3,9 +3,10 @@ $(document).on('change', '#section_select', function () {
     if ($(this).val() !== '' && $(this).val() !== 'undefined') {
         var section_data = $('#is_wanna_data').val().trim();
         var this_sec = $(this).val().trim();
+        var isFound = false;
         if (section_data !== '' && section_data !== 'undefined') {
             section_data = JSON.parse(section_data);
-            var isFound = false;
+            
             $.each(section_data, function (index, value) {
 
                 if (value.section == this_sec) {
@@ -36,13 +37,15 @@ $(document).on('change', '#section_select', function () {
             }
         }
         else {
-            $('#is_wanna_for_me').attr('data-action', '');
-            $('#sec_button').attr('data-method', '');
-            $('#sec_button').html('No action permitted');
-            $('#section_text').val('');
-            $('#section_image_preview').html('');
-            $('#sec_button').attr('disabled', true);
-            $('.section_detailed_div').fadeOut(600);
+            if (!isFound) {
+                $('#section_text').val('');
+                $('#section_image_preview').html('');
+                $('#sec_button').html('Create');
+                $('#sec_button').attr('data-method', 'create');
+                $('#is_wanna_for_me').attr('data-action', '/administrator/pages/store');
+                $('#sec_button').attr('disabled', false);
+                $('.section_detailed_div').fadeIn(600);
+            }
         }
 
     }

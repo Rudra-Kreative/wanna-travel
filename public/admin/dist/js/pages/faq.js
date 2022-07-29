@@ -136,7 +136,11 @@ function createFaq() {
                 if (response.data.response.key == 'success') {
                     if ((response.data.templates.contents !== '') && (response.data.templates.contents !== 'undefined') && (response.data.templates.contents.length > 0)) {
                         appendableQues = '<option value="" selected>Select a question</option>';
-                        appendableQues += '<option value="create">Create a new one +</option>';
+                        appendableQues+='<optgroup label="Create ?">'+
+                                        '<option value="create">Create a new one +</option>'+
+                                        '</optgroup>';
+                        appendableQues += '<optgroup label="Select question">';
+                        
                         $.each(response.data.templates.contents, function (indexInArray, valueOfElement) {
                             appendableQues += '<option value="' + valueOfElement.ques + '">' + valueOfElement.ques + '</option>';
                         });
@@ -150,7 +154,7 @@ function createFaq() {
                         $('.fac_active_button').fadeOut(600);
                         $('.ques_answer_div').fadeOut(600);
                         $('#faq_data').val(JSON.stringify(response.data.templates.contents));
-                        $('#faq_ques').html(appendableQues);
+                        $('#faq_ques').html(appendableQues+'</optgroup>');
                         Toast.fire({
                             icon: 'success',
                             title: 'FAQ has been added successfully'
@@ -242,7 +246,11 @@ function updateFaq() {
                 if (response.data.response.key == 'success') {
                     if ((response.data.templates.contents !== '') && (response.data.templates.contents !== 'undefined') && (response.data.templates.contents.length > 0)) {
                         appendableQues = '<option value="" selected>Select a question</option>';
-                        appendableQues += '<option value="create">Create a new one +</option>';
+                        appendableQues+='<optgroup label="Create ?">'+
+                                        '<option value="create">Create a new one +</option>'+
+                                        '</optgroup>';
+                        appendableQues += '<optgroup label="Select question">';
+
                         $.each(response.data.templates.contents, function (indexInArray, valueOfElement) {
                             appendableQues += '<option value="' + valueOfElement.ques + '" ' + (valueOfElement.ques == $('#faq_ques').val().trim() ? 'selected' : '') + '>' + valueOfElement.ques + '</option>';
                         });
@@ -251,7 +259,7 @@ function updateFaq() {
                         $('#answer').val(ans);
 
                         $('#faq_data').val(JSON.stringify(response.data.templates.contents));
-                        $('#faq_ques').html(appendableQues);
+                        $('#faq_ques').html(appendableQues+"</optgroup>");
                         Toast.fire({
                             icon: 'success',
                             title: 'FAQ has been updated successfully'
