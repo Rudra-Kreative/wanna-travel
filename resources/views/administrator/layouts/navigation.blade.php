@@ -103,7 +103,7 @@
       </li> --}}
   
       <!-- Settings Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fas fa-cogs"></i>
           <span class="badge badge-warning navbar-badge"></span>
@@ -119,7 +119,7 @@
             <i class="fas fa-user-cog"></i> Timezone Settings
           </a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>

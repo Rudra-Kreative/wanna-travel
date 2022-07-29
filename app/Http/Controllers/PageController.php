@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\Country;
 use App\Helper\Media;
 use App\Models\Page;
+use App\Models\Plan;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -74,7 +75,18 @@ class PageController extends Controller
 
                     $requestedView = $this->createContactPage($request);
                     if (!empty($requestedView)) {
-                        return view($requestedView['view'], ['data' => $requestedView['data']]);
+                        return redirect()->route('administrator.pages.home', ['slug' => $request->page_indentifier])
+                            ->with($requestedView['data']['response']['key'], $requestedView['data']['response']['message']);
+                        //return view($requestedView['view'], ['data' => $requestedView['data']]);
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+                case 'plan':
+                    
+                    $requestedView = $this->createPlan($request);
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
                     } else {
                         throw new ModelNotFoundException();
                     }
@@ -105,7 +117,7 @@ class PageController extends Controller
                     break;
                 case 'faq':
                     $requestedView = $this->updateFAQ($request, $page);
-                    
+
                     if (!empty($requestedView)) {
                         return  ['data' => $requestedView['data']];
                     } else {
@@ -130,6 +142,17 @@ class PageController extends Controller
                         throw new ModelNotFoundException();
                     }
                     break;
+
+                case 'plan':
+                    $requestedView = $this->updatePlan($request, $page);
+
+                    if (!empty($requestedView)) {
+                        return  ['data' => $requestedView['data']];
+                    } else {
+                        throw new ModelNotFoundException();
+                    }
+                    break;
+
                 default:
                     throw new ModelNotFoundException();
                     break;
@@ -490,14 +513,12 @@ class PageController extends Controller
 
                 $createdPage = $existingTemplates->save();
 
-                if(!empty($createdPage))
-                {
+                if (!empty($createdPage)) {
                     $response = [
                         'key' => 'success',
                         'message' => 'FAQ has been added successfully!!'
                     ];
-                }
-                else{
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'FAQ could not be added'
@@ -510,14 +531,12 @@ class PageController extends Controller
                     'contents' => json_encode($templates)
                 ]);
 
-                if(!empty($createdPage->id))
-                {
+                if (!empty($createdPage->id)) {
                     $response = [
                         'key' => 'success',
                         'message' => 'FAQ page has been created successfully!!'
                     ];
-                }
-                else{
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'FAQ page could not be created'
@@ -531,7 +550,7 @@ class PageController extends Controller
             ];
         }
 
-        return $this->getView('faq',$response);
+        return $this->getView('faq', $response);
     }
 
     public function updateFAQ($request, $page)
@@ -544,7 +563,7 @@ class PageController extends Controller
         ]);
 
         if (!empty($page->contents)) {
-            
+
             $oldPageContents = json_decode($page->contents);
 
             foreach ($oldPageContents as $content) {
@@ -561,15 +580,12 @@ class PageController extends Controller
             try {
                 $isUpdated = $page->save();
 
-                if($isUpdated)
-                {
+                if ($isUpdated) {
                     $response = [
                         'key' => 'success',
                         'message' => 'FAQ page has been updated successfully!!'
                     ];
-                }
-                else
-                {
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'FAQ page could not be updated!!'
@@ -582,7 +598,7 @@ class PageController extends Controller
                 ];
             }
 
-            return $this->getView('faq',$response);
+            return $this->getView('faq', $response);
         }
     }
 
@@ -619,15 +635,12 @@ class PageController extends Controller
 
                 $createdPage = $existingTemplates->save();
 
-                if($createdPage)
-                {
+                if ($createdPage) {
                     $response = [
                         'key' => 'success',
                         'message' => 'Section has been updated successfully!!'
                     ];
-                }
-                else
-                {
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'Section could not be updated!!'
@@ -652,23 +665,18 @@ class PageController extends Controller
                     'contents' => json_encode($templates)
                 ]);
 
-                if(!empty($createdPage->id))
-                {
+                if (!empty($createdPage->id)) {
                     $response = [
                         'key' => 'success',
                         'message' => 'Page has been created successfully!!'
                     ];
-                }
-                else
-                {
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'Page could not be created!!'
                     ];
                 }
             }
-
-
         } catch (Exception $e) {
             $response = [
                 'key' => 'success',
@@ -676,7 +684,7 @@ class PageController extends Controller
             ];
         }
 
-        return $this->getView('is_wanna_for_me',$response);
+        return $this->getView('is_wanna_for_me', $response);
     }
 
 
@@ -717,23 +725,18 @@ class PageController extends Controller
                 $page->contents = json_encode($oldPageContents);
                 $isUpdated = $page->save();
 
-                if($isUpdated)
-                {
+                if ($isUpdated) {
                     $response = [
                         'key' => 'success',
                         'message' => 'Section has been updated successfully!!'
                     ];
-                }
-                else
-                {
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'Section could not be updated!!'
                     ];
                 }
-            }
-            else
-            {
+            } else {
                 $response = [
                     'key' => 'fail',
                     'message' => 'Section could not be updated!!'
@@ -748,7 +751,7 @@ class PageController extends Controller
             ];
         }
 
-        return $this->getView('is_wanna_for_me',$response);
+        return $this->getView('is_wanna_for_me', $response);
     }
 
     public function createContactPage($request)
@@ -774,15 +777,12 @@ class PageController extends Controller
                 'contents' => json_encode($templates)
             ]);
 
-            if(!empty($createdPage->id))
-            {
+            if (!empty($createdPage->id)) {
                 $response = [
                     'key' => 'success',
                     'message' => 'Contact page has been created successfully!!'
                 ];
-            }
-            else
-            {
+            } else {
                 $response = [
                     'key' => 'fail',
                     'message' => 'Contact page could not be created!!'
@@ -795,7 +795,7 @@ class PageController extends Controller
             ];
         }
 
-        return $this->getView('contact',$response);
+        return $this->getView('contact', $response);
     }
 
     public function updateContact($request, $page)
@@ -813,21 +813,17 @@ class PageController extends Controller
             try {
                 $isUpdated = $page->save();
 
-                if($isUpdated)
-                {
+                if ($isUpdated) {
                     $response = [
                         'key' => 'success',
                         'message' => 'Contact page has been updated successfully!!'
                     ];
-                }
-                else
-                {
+                } else {
                     $response = [
                         'key' => 'fail',
                         'message' => 'Contact page could not be updated updated!!'
                     ];
                 }
-
             } catch (Exception $e) {
                 $response = [
                     'key' => 'fail',
@@ -836,7 +832,202 @@ class PageController extends Controller
             }
         }
 
-        return $this->getView('contact',$response);
+        return $this->getView('contact', $response);
+    }
+
+    public function createPlan($request)
+    {
+        
+        $this->validate($request, [
+            'heading' => ['required'],
+            'page_indentifier' => ['required'],
+            'withPlan' => ['required']
+        ]);
+
+
+        try {
+            $templates = [
+                [
+                    'heading' => $request->heading
+                ]
+            ];
+            $createdPage = Page::create([
+                'name' => 'Plan',
+                'slug' => 'plan',
+                'contents' => json_encode($templates)
+            ]);
+
+            if (!empty($createdPage->id)) {
+                if ($request->withPlan == 'true') {
+                    $this->validate($request, [
+                        'planId' => ['required', 'exists:plans,id'],
+                        'price' => ['required', 'numeric'],
+                        'features.*' => ['required', 'min:1']
+                    ]);
+
+                    //updating the plan table
+                    $plan = Plan::find($request->planId);
+                    $plan->price = $request->price;
+
+                    $planUpdated = $plan->save();
+
+                    if ($planUpdated) {
+                        //creating feature for the given plan
+
+                        $addedPlanFeatureIds = [];
+                        foreach ($request->features as $feature) {
+
+                            $isPLanAdded = $plan->planFeatures()->create(['name' => $feature]);
+                            if ($isPLanAdded->id) {
+                                $addedPlanFeatureIds[] = $isPLanAdded->id;
+                            }
+                        }
+
+                        if (!empty($addedPlanFeatureIds)) {
+                            $response = [
+                                'key' => 'success',
+                                'message' => 'Plan page has been created successfully!!'
+                            ];
+                        } else {
+                            $response = [
+                                'key' => 'fail',
+                                'message' => 'Plan features could not be added!!'
+                            ];
+                        }
+                    } else {
+                        $response = [
+                            'key' => 'fail',
+                            'message' => 'Plan page could not be created!!'
+                        ];
+                    }
+                } else {
+                    $response = [
+                        'key' => 'success',
+                        'message' => 'Plan page has been created successfully!!'
+                    ];
+                }
+            } else {
+                $response = [
+                    'key' => 'fail',
+                    'message' => 'Plan page could not be created!!'
+                ];
+            }
+        } catch (Exception $e) {
+            $response = [
+                'key' => 'fail',
+                'message' => 'Plan page could not be created!!'
+            ];
+        }
+
+        return $this->getView('plan', $response);
+    }
+
+    public function updatePlan($request, $page)
+    {
+        // print_r($page);
+        // dd($request->all());
+
+        $this->validate($request, [
+            'heading' => ['required'],
+            'page_indentifier' => ['required'],
+            'withPlan' => ['required']
+        ]);
+
+        try {
+            if (!empty($page->contents)) {
+                $oldPageContents = json_decode($page->contents);
+                $oldPageContents[0]->heading = $request->heading;
+                $page->contents = json_encode($oldPageContents);
+                
+
+                $isPageUpdated = $page->save();
+                if($isPageUpdated)
+                {
+                    if ($request->withPlan == 'true')
+                    {
+                        $this->validate($request, [
+                            'planId' => ['required', 'exists:plans,id'],
+                            'price' => ['required', 'numeric'],
+                            'features.*' => ['required', 'min:1']
+                        ]);
+
+                         //updating the plan table
+                        $plan = Plan::with(['planFeatures'])->find($request->planId);
+                        $plan->price = $request->price;
+                        $isPlanUpdated = $plan->save();
+                        
+                        if($isPlanUpdated)
+                        {
+                            
+                            if(!empty($plan->planFeatures) && (count($plan->planFeatures)>0))
+                            {
+                                $isOldFeaturesDeleted = $plan->planFeatures()->delete();
+                                
+                            }
+
+                            $updatedPlanFeatureIds = [];
+                            foreach ($request->features as $feature) {
+
+                                $isPlanFeatureUpdated = $plan->planFeatures()->create(['name' => $feature]);
+
+                                if ($isPlanFeatureUpdated->id) {
+                                    $updatedPlanFeatureIds[] = $isPlanFeatureUpdated->id;
+                            }
+                        }
+
+                        if (!empty($updatedPlanFeatureIds)) {
+                            $response = [
+                                'key' => 'success',
+                                'message' => 'Plan page has been updated successfully!!'
+                            ];
+                        } else {
+                            $response = [
+                                'key' => 'fail',
+                                'message' => '1-Plan page could not be updated!!'
+                            ];
+                        }
+
+                        }
+                        else
+                        {
+                            $response = [
+                                'key' => 'fail',
+                                'message' => '2-Plan page could not be updated!!'
+                            ];
+                        }
+                    }
+                    else
+                    {
+                        $response = [
+                            'key' => 'success',
+                            'message' => 'Plan page has been updated successfully!!'
+                        ];
+                    }
+                }
+                else
+                {
+                    $response = [
+                        'key' => 'fail',
+                        'message' => '3-Plan page could not be updated!!'
+                    ];
+                }
+            }
+            else
+            {
+                $response = [
+                    'key' => 'fail',
+                    'message' => '4-Plan page could not be updated !!'
+                ];
+            }
+        } catch (Exception $e) {
+           
+            $response = [
+                'key' => 'fail',
+                'message' => '5-Plan page could not be updated !!'
+            ];
+        }
+        
+        return $this->getView('plan', $response);
     }
 
     public function getView(String $slug, $resArray = [])
@@ -899,6 +1090,23 @@ class PageController extends Controller
 
                 ];
                 break;
+            case 'plan';
+                $templates =  Page::where('slug', 'plan')->first();
+                (!empty($templates->contents)) ? $templates->contents = json_decode($templates->contents) : '';
+
+                return [
+                    'view' => 'administrator.pages.pricing_plan.index',
+                    'res' => true,
+                    'data' => [
+                        'templates' => $templates,
+                        'plans' => Plan::with('planFeatures')->where('is_active', true)->get(),
+                        'data_method' => !empty($templates->contents) ? 'update' : 'create',
+                        'response' => $resArray
+                    ],
+
+                ];
+                break;
+
             default:
                 return '';
                 break;

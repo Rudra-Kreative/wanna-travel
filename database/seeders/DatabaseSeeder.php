@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Plan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +21,18 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Plan::create([
+            'name' => 'Basic',
+            'price' => '100'
+        ]);
+        Plan::create([
+            'name' => 'Advanced',
+            'price' => '400'
+        ]);
+        Plan::create([
+            'name' => 'Premium',
+            'price' => '600'
+        ]);
     }
 }
