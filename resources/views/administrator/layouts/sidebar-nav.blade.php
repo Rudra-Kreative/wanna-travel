@@ -3,7 +3,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="{{ asset(Auth::guard('administrator')->user()->image_path) }}" class="img-circle elevation-2"
+            <img src="{{ !empty(Auth::guard('administrator')->user()->image_path)?asset(Auth::guard('administrator')->user()->image_path): 'https://picsum.photos/200/300' }}" class="img-circle elevation-2"
                 style="height: 50px;width: 50px" alt="User Image">
         </div>
         <div class="info">
@@ -100,6 +100,12 @@
                         <a href="{{ route('administrator.pages.home',['slug'=>'contact']) }}" class="nav-link">
                             <i class="fas fa-angle-double-right"></i>
                             <p>Contact Us</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.pages.home',['slug'=>'plan']) }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Pricing Plans</p>
                         </a>
                     </li>
                     

@@ -7,6 +7,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&d
 <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/dist/css/custom.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/dist/css/ajax-loader-one.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/plugins/jquery-datatables/css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2/sweetalert2.min.css') }}">
