@@ -358,7 +358,7 @@ class PageController extends Controller
                     }
                     unset($existingBannerArr[$key]);
                 } else {
-                    $existingBanner[count($existingBanner)] = $existingBannerArr[$key][0]->fileName;
+                    $existingBanner[count($existingBanner)] = $existingBannerArr->$key[0]->fileName;
                 }
             }
 

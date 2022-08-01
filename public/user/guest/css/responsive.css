@@ -1,0 +1,1748 @@
+/** @format */
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1025px) {
+  section.wanna6 img.wanna6-img {
+    width: 55%;
+    height: 500px;
+  }
+}
+
+@media (max-width: 1024px) {
+  header .menu-sec nav ul li a {
+    font-size: 12px;
+  }
+  header .menu-sec nav ul {
+    gap: 20px;
+  }
+  header a.register {
+    font-size: 13px;
+    padding: 4px 19px;
+  }
+  section.home-sec .home-slider .item .banner h2 {
+    font-size: 70px;
+    line-height: 93px;
+    max-width: 90%;
+  }
+  section.wanna3 h3 {
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+  .pm-btn {
+    font-size: 12px;
+    line-height: 24px;
+    padding: 6px 22px;
+    margin-top: 12px;
+  }
+  section.wanna3 p {
+    font-size: 14px;
+    line-height: 26px;
+  }
+  section.wanna4 h3 {
+    font-size: 26px;
+    margin-bottom: 4px;
+    line-height: 36px;
+  }
+  .pm-btn {
+    font-size: 12px;
+    line-height: 24px;
+    padding: 6px 22px;
+    margin-top: 12px;
+  }
+  section.wanna4 p {
+    font-size: 14px;
+    line-height: 26px;
+  }
+  section.wanna6 img.wanna6-img {
+    width: 55%;
+    height: 500px;
+  }
+  section.wanna6 p {
+    font-size: 14px;
+    line-height: 28px;
+    margin-bottom: 5px;
+  }
+  section.wanna6 h3 {
+    font-size: 25px;
+    line-height: 34px;
+    margin-bottom: 10px;
+  }
+  section.faq-home h2 {
+    max-width: 45%;
+    font-size: 40px;
+    line-height: 60px;
+  }
+  section.wanna6 img.wanna6-img {
+    width: 55%;
+    height: 500px;
+  }
+}
+
+@media (max-width: 991px) {
+  section.home-sec .home-slider .item .banner h2 {
+    font-size: 40px;
+    line-height: 60px;
+    max-width: 80%;
+  }
+  header .menu-sec nav ul li a {
+    font-size: 10px;
+    line-height: 24px;
+  }
+  header .menu-sec nav ul {
+    gap: 10px !important;
+  }
+  header a.register {
+    font-size: 10px;
+    line-height: 24px;
+    padding: 4px 12px;
+  }
+  section.home-sec .home-slider .item .banner p {
+    font-size: 12px;
+    line-height: 24px;
+    max-width: 60%;
+    margin-inline: auto;
+  }
+  section.wanna3 {
+    padding: 40px 0 30px;
+  }
+  section.wanna2 {
+    padding: 50px 0 30px;
+  }
+  section.wanna2 .wanna-img {
+    margin-top: 30px;
+  }
+  section.wanna2 h3 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+  section.wanna2 img.pattern2 {
+    top: 58%;
+    width: 30%;
+    z-index: -1;
+  }
+  section.wanna2 p {
+    font-size: 12px;
+    line-height: 25px;
+  }
+  section.wanna2 h3::after {
+    height: 3px;
+  }
+  section.wanna2 .wanna-img img:first-child {
+    position: static !important;
+    width: 75%;
+  }
+  section.wanna2 .wanna-img img:last-child {
+    top: -76px;
+    height: 220px;
+    right: 30px;
+  }
+  section.wanna3 img.wanna3-img {
+    width: 55%;
+  }
+  section.wanna4 img.wanna4-img {
+    width: 55%;
+  }
+  section.wanna3 h3 {
+    font-size: 22px;
+    line-height: 40px;
+    margin-bottom: 6px;
+  }
+  section.wanna4 h3 {
+    font-size: 22px;
+    line-height: 40px;
+    margin-bottom: 6px;
+  }
+  section.wanna3 p {
+    font-size: 12px;
+    line-height: 22px;
+  }
+  section.wanna4 p {
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .pm-btn {
+    font-size: 10px;
+    line-height: 24px;
+    padding: 6px 16px;
+    margin-top: 8px;
+  }
+  section.wanna5 .wanna5-img-box1::after {
+    width: 92.8%;
+  }
+  section.wanna5 .wanna5-img-box1:hover .img-box-text {
+    bottom: 25%;
+  }
+  section.wanna5 .wanna5-img-box1 .img-box-text h4 {
+    font-size: 25px;
+    line-height: 38px;
+    margin-bottom: 8px;
+  }
+  section.wanna6 img.wanna6-img {
+    width: 55%;
+    min-height: 360px;
+  }
+  section.wanna6 p {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 5px;
+  }
+  section.wanna6 h3 {
+    font-size: 22px;
+    line-height: 35px;
+    margin-bottom: 8px;
+  }
+  section.wanna6 {
+    padding: 0 0 50px;
+  }
+  section.wanna7 .text-box h4 {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  .col-lg-4.sub4 {
+    margin-top: 30px;
+  }
+  section.wanna-accordian {
+    padding: 0 0 40px;
+  }
+  section.wanna-accordian h2 {
+    font-size: 22px;
+    line-height: 50px;
+    margin-bottom: 5px;
+  }
+  footer img.pattern {
+    display: none;
+  }
+  /* welcome-page */
+  section.welcome-home h2 span {
+    margin-top: 10px;
+  }
+  section.welcome-home h2 {
+    font-size: 30px;
+    width: 100%;
+  }
+  section.hottelers h3 {
+    font-size: 20px;
+    line-height: 34px;
+    margin-bottom: 18px;
+  }
+  section.hottelers p {
+    font-size: 12px;
+    line-height: 28px;
+    margin-bottom: 25px;
+    max-width: 50%;
+    margin-inline: auto;
+  }
+  section.hottelers {
+    padding: 40px 0;
+  }
+  section.hottelers a.hate {
+    font-size: 10px;
+    line-height: 21px;
+    margin-top: 16px;
+  }
+  section.hotels-grid .h-grid p {
+    font-size: 12px;
+    line-height: 24px;
+    min-height: 120px;
+  }
+  section.hotels-grid .h-grid h4 {
+    font-size: 16px;
+    line-height: 25px;
+    margin-top: 14px;
+    margin-bottom: 5px;
+  }
+  section.hotels-grid .h-grid ul li {
+    font-size: 12px;
+    line-height: 30px;
+  }
+  section.hotels-grid a.show-btn {
+    margin-top: 15px !important;
+    width: 18%;
+    margin-inline: auto;
+    font-size: 10px;
+  }
+  section.hotels-grid .h-grid ul {
+    margin: 0px 0 0;
+  }
+  /* hello-page */
+  section.hello2 {
+    padding: 40px 0 0;
+  }
+  section.hello2 h3 {
+    font-size: 20px;
+    line-height: 35px;
+    max-width: 82%;
+    margin-bottom: 14px;
+    margin-inline: auto;
+  }
+  section.hello2 p {
+    font-size: 12px;
+    line-height: 25px;
+    max-width: 84%;
+    margin-inline: auto;
+  }
+  section.hello2 p:last-child {
+    margin-top: 18px;
+  }
+  section.hello3 h3 {
+    font-size: 20px;
+    line-height: 35px;
+    margin-bottom: 20px;
+    max-width: 66%;
+  }
+  section.hello3 {
+    padding: 20px 0px 0;
+  }
+  section.hello3 form label {
+    margin-bottom: 7px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  section.hello3 form input:not([type='submit']) {
+    height: 40px;
+    width: 100%;
+    font-size: 10px;
+    line-height: 21px;
+    padding: 10px 10px;
+  }
+  section.hello3 form .form-row {
+    margin-bottom: 15px;
+  }
+  a.check {
+    margin-top: 20px;
+    display: block;
+    width: 20%;
+    margin-inline: auto;
+    margin-bottom: 30px;
+  }
+  section.property-grids {
+    padding: 40px 30px;
+    gap: 20px;
+  }
+  section.property-grids a.load {
+    margin-top: 20px;
+  }
+  section.faq-home h2 {
+    max-width: 45%;
+    line-height: 48px;
+  }
+  section.faq-accordian {
+    padding: 40px 0 70px;
+  }
+  section.faq-accordian .accordion-content p {
+    font-size: 12px;
+    line-height: 26px;
+  }
+  section.contact h3 {
+    font-size: 24px;
+    line-height: 50px;
+    margin-bottom: 24px;
+  }
+  section.contact form {
+    margin-bottom: 30px;
+  }
+  section.login form {
+    margin-bottom: 30px;
+  }
+  section.Register form p.reg {
+    margin-top: 20px;
+
+    margin-bottom: 45px;
+  }
+  section.Register form {
+    margin-bottom: 30px;
+  }
+  section.Register2 form p.reg {
+    margin-bottom: 7px;
+  }
+  section.Register2 form {
+    margin-bottom: 30px;
+  }
+  section.Register3 form {
+    margin-bottom: 30px;
+  }
+  section.Register4 form {
+    margin-bottom: 30px;
+  }
+  section.dash-sec1 {
+    padding: 40px 0 0;
+  }
+  section.dash-sec1 h3 {
+    font-size: 26px;
+    line-height: 44px;
+    margin-bottom: 20px;
+  }
+  section.dash-sec1 .dash1-grid {
+    margin-top: 20px;
+  }
+  section.dash-sec1 .dash1-grid h4 {
+    font-size: 18px;
+  }
+  section.dash-sec1 p {
+    font-size: 12px;
+  }
+  section.check-boxes h2 {
+    font-size: 24px;
+    line-height: 44px;
+    margin-bottom: 30px;
+  }
+  section.check-boxes .check-box {
+    padding: 35px 24px;
+  }
+  section.check-boxes .check-box.check::after {
+    top: 30px;
+    right: 30px;
+  }
+  section.check-boxes a.next {
+    margin-top: 30px;
+    width: 12%;
+    display: block;
+    margin-inline: auto;
+  }
+  section.homes h3 {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 50px;
+    margin-bottom: 30px;
+  }
+  section.homes .h-box h5 {
+    font-size: 10px;
+    line-height: 20px;
+    max-width: 50%;
+    margin-bottom: 0;
+  }
+  section.homes .h-box.check::after {
+    top: 39%;
+    right: 14px;
+  }
+  section.homes a.next {
+    margin-top: 50px;
+    display: block;
+    width: 12%;
+    margin-inline: auto;
+  }
+  section.big-home h3 {
+    font-size: 20px;
+    line-height: 33px;
+    margin-bottom: 19px;
+    max-width: 50%;
+    margin-inline: auto;
+  }
+
+  section.mstep-form .form-step1 {
+    padding: 40px 0;
+  }
+  section.mstep-form .form-step1 .col-lg-4.pt-5 {
+    padding-top: 20px !important;
+  }
+  section.mstep-form .form-step1 .col-lg-8.pt-5 {
+    padding-top: 15px !important;
+  }
+  .form-step3 .file-msg p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .form-step3 input[type='submit'] {
+    margin-top: 10px;
+  }
+  section.dashboard ul.head li a.add {
+    font-size: 10px;
+    padding: 10px 20px;
+    margin-right: 20px;
+  }
+  section.dashboard ul.head li a.list {
+    font-size: 10px;
+    padding: 5px 18px;
+  }
+  section.dashboard ul.dash-links li:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  section.dashboard .dash-card .dash-text p {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+  section.dashboard .acc-t form .form-row {
+    padding: 10px 0;
+    margin-bottom: 10px;
+  }
+  section.dashboard .acc-t form .form-row label {
+    font-size: 14px;
+    line-height: 30px;
+  }
+  section.dashboard .acc-t form .form-row input {
+    height: 35px;
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+  section.dashboard .acc-t form ul.changes {
+    margin: 37px 0 0 0;
+  }
+  .price-c .row {
+    flex-wrap: nowrap;
+  }
+  .price-c {
+    overflow-x: scroll;
+  }
+
+  /* give-way */
+  section.giveway1 {
+    padding: 40px 0;
+  }
+  section.giveway1 h3 {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 6px;
+  }
+  section.giveway1 h2 {
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 10px;
+  }
+  section.giveway1 span {
+    font-size: 14px;
+    line-height: 165%;
+    margin-bottom: 20px;
+  }
+  section.giveway1 h5 {
+    font-size: 20px;
+  }
+  section.giveway1 p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  section.giveway1 .col-lg-6.pt-4 img {
+    width: 100%;
+  }
+  section.giveway1 h6 {
+    font-size: 18px;
+    line-height: 165%;
+    margin-top: 12px;
+  }
+  .giveway2 {
+    padding-top: 20px !important;
+  }
+  section.giveway1 .giveway2 h3 {
+    font-size: 28px;
+  }
+  section.giveway1 .giveway2 ul.follow {
+    margin: 6px 0 0 0;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+  section.giveway1 .giveway2 ul.follow li {
+    font-size: 16px;
+  }
+  section.giveway1 .giveway2 ul.follow li i {
+    margin-right: 10px;
+    font-size: 22px;
+  }
+  section.giveway1 .giveway2 h4 {
+    font-size: 20px;
+    line-height: 165%;
+    margin-top: 30px;
+    max-width: 68%;
+    margin-bottom: 16px;
+  }
+  section.giveway1 .giveway2 p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  form.giveway-form {
+    margin-top: 16px;
+  }
+  form.giveway-form .col-lg-12 {
+    padding-top: 23px !important;
+  }
+  section.giveway1 form.giveway-form .checking {
+    margin-bottom: 10px;
+  }
+  section.hotels ul.share2 li a {
+    padding: 4px 10px;
+    margin-top: 0;
+    font-size: 10px;
+  }
+  section.hotels ul.share2 {
+    gap: 10px;
+  }
+  section.hotels ul.share li a {
+    padding: 4px 16px;
+    font-size: 9px;
+  }
+  section.hotels ul.share {
+    gap: 10px;
+  }
+  section.hotels h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  section.hotels ul.part li {
+    font-size: 12px;
+  }
+  section.hotels span {
+    font-size: 12px;
+    line-height: 165%;
+    margin-bottom: 15px;
+  }
+  section.hotels-grid .h-item:nth-child(9)::after {
+    border-radius: 5px;
+  }
+  section.hotels-grid .hotels {
+    gap: 10px;
+  }
+  section.hotels-3 p {
+    font-size: 14px;
+    line-height: 174%;
+  }
+  section.hotels-grid {
+    padding: 20px 0 0;
+  }
+  section.hotels {
+    padding: 30px 0 12px;
+  }
+  section.giveaway3 {
+    padding: 30px 0;
+  }
+  section.giveaway3 .col-lg-4.pt-5 {
+    padding-top: 10px !important;
+  }
+  section.giveaway3 .col-lg-8.pt-5 {
+    padding-top: 10px !important;
+  }
+  section.giveaway3 form input[type='submit'] {
+    margin-top: 0px;
+  }
+  section.pricing .row {
+    flex-wrap: nowrap;
+  }
+  section.pricing {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    border-bottom: 1px solid #ffffff75;
+  }
+  header .menu-sec nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .slim-container .slim-bar {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: #4e86b900;
+  }
+  .slim-container .slim-nav {
+    background: #4e4e4e2e;
+    margin-top: 56px;
+    backdrop-filter: blur(10px);
+  }
+  .slim-container .slim-nav ul li a {
+    width: 90%;
+    font-size: 12px;
+  }
+  header a.register {
+    position: absolute;
+    font-size: 10px;
+    line-height: 24px;
+    text-align: center;
+    padding: 2px 13px;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .owl-carousel .owl-item img {
+    height: 60vh;
+    object-fit: cover;
+  }
+  section.home-sec .home-slider .item .banner h2 {
+    font-size: 30px;
+    line-height: 40px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  section.home-sec .home-slider .item .banner p {
+    font-size: 14px;
+    line-height: 28px;
+    max-width: 80%;
+    margin-inline: auto;
+  }
+  section.wanna2 {
+    padding: 40px 0;
+  }
+  section.wanna2 h3 {
+    font-size: 20px;
+    line-height: 32px;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  section.wanna2 span.short {
+    font-size: 10px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+  }
+  section.wanna2 h3::after {
+    height: 2px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  section.wanna2 p {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: justify;
+  }
+  section.wanna2 .wanna-img img:first-child {
+    width: 75%;
+  }
+  section.wanna2 .wanna-img img:last-child {
+    right: 17px;
+    top: -10px;
+    height: 140px;
+    position: absolute;
+  }
+  section.wanna3 {
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .pm-btn {
+    font-size: 12px;
+    line-height: 24px;
+    padding: 6px 26px;
+    margin-top: 10px;
+  }
+  section.wanna2 img.pattern2 {
+    display: none;
+  }
+  section.wanna3 h3 {
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 5px;
+  }
+  section.wanna2 .wanna-img img {
+    position: static;
+  }
+  section.wanna2 .wanna-img {
+    padding-top: 30px;
+  }
+  section.wanna3 .container {
+    position: static;
+    order: 2;
+  }
+  section.wanna3 {
+    flex-direction: column;
+    gap: 20px;
+  }
+  section.wanna3 img.wanna3-img {
+    width: 90%;
+    order: 1;
+  }
+  section.wanna3 p {
+    font-size: 12px;
+    line-height: 25px;
+  }
+  section.wanna4 .container {
+    position: static;
+    text-align: center !important;
+    order: 2;
+  }
+  section.wanna4 {
+    padding: 30px 0 50px;
+    gap: 20px;
+    flex-direction: column;
+  }
+  section.wanna4 h3 {
+    font-size: 20px;
+    line-height: 35px;
+    margin-bottom: 10px;
+  }
+  section.wanna4 img.wanna4-img {
+    width: 90%;
+    order: 1;
+  }
+  section.wanna4 p {
+    font-size: 12px;
+    line-height: 25px;
+  }
+  section.wanna5 .wanna5-img-box2 {
+    margin-top: 20px;
+    gap: 20px;
+  }
+  section.wanna5 .wanna5-img-box1 .img-box-text h4 {
+    font-size: 24px;
+    line-height: 40px;
+    margin-bottom: 8px;
+    max-width: 60%;
+  }
+  section.wanna5 .wanna5-img-box1:hover .img-box-text {
+    bottom: 30%;
+  }
+  section.wanna5 .wanna5-img-box1 .img-box-text h5 {
+    font-size: 12px;
+    line-height: 24px;
+    max-width: 80%;
+  }
+  section.wanna5 .wanna5-img-box1::after {
+    width: 93%;
+  }
+  section.wanna6 .container {
+    position: static;
+  }
+  section.wanna6 {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 0 0 40px;
+  }
+  section.wanna5 {
+    padding: 0 0 40px;
+  }
+  section.wanna6 h3 {
+    font-size: 20px;
+    line-height: 40px;
+    margin-bottom: 5px;
+  }
+
+  section.wanna6 p {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 5px;
+  }
+
+  section.wanna-accordian h2 {
+    font-size: 20px;
+    line-height: 34px;
+    margin-bottom: 5px;
+  }
+  section.wanna-accordian .accordion-toggle {
+    padding: 4px 0;
+    font-size: 13px;
+    line-height: 27px;
+  }
+  section.wanna-accordian .accordion-content p {
+    font-size: 12px;
+    line-height: 26px;
+  }
+  section.wanna-accordian .accordion-toggle:before {
+    right: 15px;
+    top: 4px;
+  }
+  section.wanna-accordian .accordion-toggle.active:after {
+    right: 20px;
+    top: 10px;
+  }
+  section.wanna-accordian {
+    padding: 0 0 40px;
+  }
+  section.wanna7 img {
+    height: 100px;
+  }
+  section.wanna7 .text-box h4 {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  section.wanna7 .text-box h5 {
+    font-size: 14px;
+    line-height: 30px;
+  }
+  footer {
+    padding-top: 30px;
+  }
+  footer .sub1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  footer .sub1 ul.social {
+    gap: 20px;
+    justify-content: center;
+  }
+  footer .sub1 p {
+    font-size: 12px;
+    margin-bottom: 16px;
+    max-width: 70%;
+    margin-inline: auto;
+  }
+  footer h4 {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  footer h5 {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  footer .sub2 ul.detail {
+    margin: 7px 0 0;
+  }
+  footer .sub2 ul.detail li {
+    font-size: 12px;
+    line-height: 24px;
+  }
+  footer .sub3 ul.links li {
+    font-size: 12px;
+    line-height: 24px;
+  }
+  footer .sub3 ul.links li:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  .sub4 {
+    margin-top: 20px;
+  }
+  footer .sub4 form input[type='text'] {
+    width: 100%;
+    height: 40px;
+    padding: 12px 18px;
+    font-size: 12px;
+    line-height: 21px;
+  }
+  footer img.pattern {
+    display: none;
+  }
+  footer .sub4 form input[type='submit'] {
+    font-size: 12px;
+    height: 40px;
+  }
+  footer .COPY {
+    margin-top: 20px;
+  }
+  footer .COPY P {
+    padding: 12px 0;
+    font-size: 12px;
+    line-height: 21px;
+    margin: 0;
+  }
+  /* welcome-wanna */
+  section.welcome-home img {
+    height: 50vh;
+    object-fit: cover;
+  }
+  section.welcome-home h2 span {
+    margin-top: 10px;
+  }
+  section.welcome-home h2 {
+    font-size: 30px;
+  }
+  section.hottelers h3 {
+    font-size: 20px;
+    line-height: 38px;
+    margin-bottom: 18px;
+  }
+  section.hottelers {
+    padding: 40px 0;
+  }
+  section.hottelers p {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  section.hottelers a.hate {
+    font-size: 10px;
+    line-height: 21px;
+    margin-top: 12px;
+  }
+  section.hotels-grid .h-grid p {
+    font-size: 12px;
+    line-height: 26px;
+    min-height: 90px;
+    max-width: 80%;
+    margin-bottom: 5px;
+    margin-inline: auto;
+  }
+  section.hotels-grid .h-grid ul li {
+    font-size: 16px;
+  }
+  section.hotels-grid .h-grid ul {
+    margin: 0px 0 0;
+    gap: 30px;
+    justify-content: center;
+  }
+  section.hotels-grid .h-grid h4 {
+    margin-top: 22px;
+  }
+  section.hotels-grid .h-grid {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  section.hotels-grid a.show-btn {
+    margin-top: 10px !important;
+    width: 46%;
+
+    font-size: 12px;
+  }
+  section.hotels-grid {
+    padding: 0 0 30px;
+  }
+  section.wanna6 img.pattern {
+    display: none;
+  }
+  img.wanna6-img {
+    order: -1;
+    width: 100% !important;
+    height: unset !important;
+  }
+  a.check {
+    margin-top: 10px;
+    width: 48%;
+    margin-bottom: 40px;
+  }
+  section.faq-home h2 {
+    max-width: 80%;
+    line-height: 50px;
+  }
+  section.faq-accordian .accordion-toggle {
+    font-size: 14px;
+    line-height: 28px;
+    padding-right: 30px;
+  }
+  section.faq-accordian {
+    padding: 30px 0 30px;
+  }
+  section.faq-accordian .accordion-content p {
+    font-size: 12px;
+    line-height: 24px;
+  }
+  section.faq-accordian .accordion-toggle:before {
+    right: 20px;
+    top: 10px;
+  }
+  section.faq-accordian .accordion-toggle:after {
+    right: 20px;
+    top: 10px;
+  }
+  section.hello2 {
+    padding: 30px 0 20px;
+  }
+  section.hello2 h3 {
+    font-size: 20px;
+    line-height: 34px;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+  section.hello2 p {
+    font-size: 12px;
+    line-height: 24px;
+    max-width: 100%;
+  }
+  section.hello2 p:last-child {
+    margin-top: 18px;
+  }
+  section.hello3 h3 {
+    font-size: 20px;
+    line-height: 34px;
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 100%;
+  }
+  section.hello3 form input[type='submit'] {
+    margin-top: 14px !important;
+  }
+  section.hello3 form input:not([type='submit']) {
+    height: 42px;
+    font-size: 12px;
+    padding: 10px 10px;
+  }
+  section.hello3 form label {
+    margin-bottom: 2px;
+    font-size: 12px;
+    line-height: 24px;
+  }
+  section.hello3 form .form-row {
+    margin-bottom: 20px;
+  }
+  section.property-grids {
+    padding: 40px 12px;
+  }
+  .contact form {
+    margin-bottom: 20px;
+  }
+  section.contact h3 {
+    font-size: 24px;
+    line-height: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  section.login {
+    padding: 40px 0;
+  }
+  section.login h3 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .col-lg-6.slide {
+    margin-top: 30px;
+  }
+  section.Register {
+    padding: 30px 0;
+  }
+  section.Register h3 {
+    font-size: 22px;
+    line-height: 50px;
+    color: #000000;
+    margin: 0;
+    text-align: center;
+  }
+  section.Register p {
+    font-size: 16px;
+    line-height: 28px;
+
+    text-align: center;
+    max-width: 80%;
+    margin-inline: auto;
+  }
+  section.Register form {
+    margin-top: 40px;
+  }
+  section.Register2 h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+  section.Register2 form p.reg {
+    margin-bottom: 10px;
+  }
+  section.Register3 {
+    padding: 30px 0;
+  }
+  section.Register3 h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+  section.Register3 form {
+    margin-top: 40px;
+  }
+  section.Register4 {
+    padding: 30px 0;
+  }
+  section.Register4 h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+  section.Register4 form {
+    margin-top: 40px;
+  }
+  /* headre2` */
+  .slim-container .slim-bar {
+    position: absolute !important;
+    background: #4e86b900 !important;
+  }
+  .header2 .slim-container .slim-nav {
+    background: #000000 !important;
+    margin-top: 55px !important;
+  }
+  header .menu-sec nav ul {
+    gap: 0px !important;
+  }
+  /* end[] */
+  section.dash-sec1 {
+    padding: 30px 0;
+  }
+  section.dash-sec1 h3 {
+    font-size: 18px;
+    line-height: 35px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  section.dash-sec1 p {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 100%;
+    margin-inline: auto;
+    min-height: 40px;
+    text-align: center;
+  }
+  section.dash-sec1 .dash1-grid {
+    margin-top: 50px;
+    gap: 60px;
+  }
+  section.check-boxes h2 {
+    font-size: 17px;
+    line-height: 36px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  section.check-boxes .check-box {
+    padding: 20px 24px;
+    text-align: center;
+  }
+  section.check-boxes .check-box.check::after {
+    top: 24px;
+    right: 25px;
+  }
+  section.check-boxes a.next {
+    margin-top: 10px;
+    width: 26% !important;
+  }
+  section.homes {
+    padding: 30px 0;
+  }
+  section.homes h3 {
+    font-size: 23px;
+    margin-bottom: 40px;
+  }
+  section.homes .h-box {
+    margin-bottom: 30px;
+  }
+  section.homes a.next {
+    margin-top: 0px;
+  }
+  section.big-home img {
+    margin-bottom: 30px;
+    height: 100px;
+  }
+  section.big-home {
+    padding: 30px 0;
+  }
+  section.big-home span {
+    font-size: 16px;
+    margin-bottom: 26px;
+  }
+  section.big-home h3 {
+    font-size: 20px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+  section.big-home p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+  section.big-home ul.b-btns {
+    width: 300px;
+    margin-top: 40px !important;
+  }
+  /* multistep-form */
+  section.mstep-form {
+    padding: 30px 0;
+  }
+  section.mstep-form ul li span {
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+  section.mstep-form ul li span::after {
+    height: 25px;
+    width: 25px;
+    top: -1px;
+  }
+  section.mstep-form ul li.done span::after {
+    height: 25px;
+    width: 25px;
+    top: -1px;
+  }
+  section.mstep-form ul li {
+    border-bottom: 6px solid #c4c4c4;
+    padding-bottom: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+  }
+  section.mstep-form ul li.done {
+    border-bottom: 6px solid #000;
+  }
+  section.mstep-form .form-step1 {
+    padding: 20px 0;
+  }
+  section.mstep-form .form-step1 h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    line-height: 26px;
+  }
+  section.mstep-form .form-step1 p {
+    font-size: 12px;
+  }
+  section.mstep-form .form-step1 .form-row label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  section.mstep-form .form-step1 .form-row input:not([type='Submit']) {
+    height: 35px;
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+  section.mstep-form .form-step1 .form-row small {
+    margin-top: 4px;
+    font-size: 8px;
+  }
+  section.mstep-form .form-step1 .form-row select {
+    width: 100%;
+    height: 35px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  section.mstep-form .form-step1 .form-row {
+    margin-bottom: 10px;
+  }
+  .form-step1 .col-lg-4.pt-5 {
+    padding-top: 10px !important;
+  }
+  .form-step1 .col-lg-8.pt-5 {
+    padding-top: 10px !important;
+  }
+  .form-step1 a.pm-btn {
+    font-size: 12px;
+    padding: 6px 26px;
+    margin-top: 20px;
+    width: 37%;
+    display: block;
+    margin-inline: auto;
+  }
+  .form-step2 ul.check-boxes {
+    justify-content: center;
+  }
+  .form-step2 ul.check-boxes li {
+    width: 50%;
+  }
+  .form-step2 a.pm-btn {
+    width: 37%;
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-inline: auto;
+  }
+  .form-step2 a {
+    font-size: 10px;
+    text-align: center;
+  }
+  .form-step2 h3 {
+    font-size: 18px;
+  }
+  .form-step2 {
+    padding: 30px 0;
+  }
+  section.mstep-form .form-step2 p {
+    font-size: 12px;
+  }
+  .form-step3 h3 {
+    font-size: 18px;
+  }
+  .form-step3 {
+    padding: 30px 0;
+  }
+  section.mstep-form .form-step3 p {
+    font-size: 12px;
+  }
+  .form-step3 .file-drop-area {
+    display: block;
+    padding: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .form-step3 .file-msg h5 {
+    font-size: 14px;
+  }
+  .form-step3 .file-msg p {
+    font-size: 10px !important;
+    line-height: 12px;
+  }
+  .form-step3 .fake-btn {
+    margin-top: 16px;
+    width: 42%;
+    display: block;
+    margin-inline: auto;
+  }
+  .form-step3 .fake-btn img {
+    margin-right: 8px;
+    width: 15px;
+  }
+  .form-step3 input[type='submit'] {
+    margin-top: 10px;
+    margin-inline: auto;
+    display: block;
+  }
+  .form-step3 .gallery {
+    margin-bottom: 40px;
+  }
+  .form-step3 .gallery img {
+    margin-bottom: 20px;
+    height: 80px;
+    width: 80px;
+  }
+  /* confirmed */
+  section.confirm h3 {
+    font-size: 20px;
+    line-height: 34px;
+    max-width: 90%;
+    margin-inline: auto;
+    margin-top: 20px;
+  }
+  section.confirm img {
+    width: 100%;
+  }
+  section.confirm {
+    padding: 30px 0;
+  }
+  /* dashbord */
+  section.dashboard ul.dash-links {
+    margin: 0px 0 0 0;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+  }
+  section.dashboard {
+    padding: 30px 0;
+  }
+  section.dashboard ul.dash-links li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  section.dashboard ul.dash-links li img {
+    margin-right: 0;
+    width: 24px;
+    margin-bottom: 0px;
+  }
+  section.dashboard ul.dash-links li:not(:last-child) {
+    margin-bottom: 18px;
+  }
+  section.dashboard ul.dash-links li {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  section.dashboard ul.head {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  section.dashboard ul.head li:last-child {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  section.dashboard ul.head li h2 {
+    font-size: 20px;
+  }
+  section.dashboard ul.head li a.add {
+    font-size: 10px;
+    padding: 8px 24px;
+    margin-right: 10px;
+    height: 38px;
+  }
+  section.dashboard ul.head li a.list {
+    font-size: 10px;
+    color: #000000;
+    padding: 6px 22px;
+    margin: 0;
+  }
+  section.dashboard .dash-card .dash-text p {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 6px;
+  }
+  section.dashboard .acc-t form h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  section.dashboard .dash-card .dash-text h5 {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 15px;
+  }
+  section.dashboard .dash-card {
+    margin: 15px 0;
+  }
+  section.dashboard .dash-card .dash-text a {
+    font-size: 14px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+  section.dashboard .acc-t form .form-row {
+    padding: 10px 0;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  section.dashboard .acc-t form .form-row input {
+    height: 35px;
+    font-size: 12px;
+  }
+  section.dashboard .acc-t form .form-row label {
+    font-size: 12px;
+  }
+  section.dashboard .acc-t form ul.changes {
+    margin: 20px 0 0 0;
+    gap: 24px;
+  }
+  section.dashboard .acc-t form ul.changes li a {
+    font-size: 12px;
+    padding: 6px 24px;
+  }
+  section.dashboard .acc-t form ul.changes li input[type='submit'] {
+    padding: 6px 24px;
+    font-size: 12px;
+  }
+  section.dashboard .price-c .price-box h4 {
+    font-size: 16px;
+    margin-top: 14px;
+  }
+  section.dashboard .price-c .price-box {
+    margin-bottom: 30px;
+    width: 80%;
+    margin-inline: auto;
+  }
+  /* giveway page */
+  section.giveway1 {
+    padding: 30px 0;
+  }
+  section.giveway1 h3 {
+    font-size: 11px;
+    line-height: 10px;
+    margin-bottom: 0px;
+  }
+  section.giveway1 h2 {
+    font-size: 24px;
+    line-height: 50px;
+    margin-bottom: 4px;
+  }
+  section.giveway1 span {
+    font-size: 14px;
+    line-height: 165%;
+    margin-bottom: 14px;
+  }
+  section.giveway1 h5 {
+    font-size: 20px;
+  }
+  section.giveway1 p {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 7px;
+  }
+  section.giveway1 h6 {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .giveway2 {
+    padding-top: 10px !important;
+  }
+  section.giveway1 .giveway2 h3 {
+    font-size: 20px;
+  }
+  section.giveway1 .giveway2 ul.follow li {
+    font-size: 12px;
+  }
+  section.giveway1 .giveway2 ul.follow li i {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  section.giveway1 .giveway2 ul.follow {
+    margin: 7px 0 0 0;
+    justify-content: start;
+    gap: 20px;
+  }
+  section.giveway1 .giveway2 h4 {
+    font-size: 18px;
+    line-height: 162%;
+    margin-top: 22px;
+    max-width: 90%;
+  }
+  section.giveway1 .giveway2 p {
+    font-size: 12px;
+    line-height: 165%;
+    margin-top: 10px;
+  }
+  form.giveway-form {
+    margin-top: 20px;
+  }
+  form.giveway-form .col-lg-4 {
+    margin-bottom: 15px;
+  }
+  section.giveway1 form.giveway-form label {
+    font-size: 12px;
+    line-height: 24px;
+    margin-bottom: 5px;
+  }
+  section.giveway1 form.giveway-form input[type='text'] {
+    height: 35px;
+    font-size: 12px;
+    line-height: 21px;
+    color: #000;
+    padding: 10px 15px;
+  }
+  section.giveway1 form.giveway-form textarea {
+    height: 170px;
+    padding: 14px 14px;
+    font-size: 12px;
+  }
+  form.giveway-form .col-lg-12 {
+    padding-top: 10px !important;
+  }
+  section.giveway1 form.giveway-form .checking label {
+    font-size: 12px;
+  }
+  /* gaveway2 */
+  section.hotels {
+    padding: 20px 0 20px;
+  }
+  section.hotels h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  section.hotels ul.part li {
+    font-size: 12px;
+  }
+  section.hotels span {
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  section.hotels ul.share li a {
+    padding: 4px 20px;
+    font-size: 9px;
+  }
+  section.hotels ul.share {
+    gap: 14px;
+  }
+  section.hotels ul.share2 li a {
+    margin-top: 0;
+    font-size: 9px;
+  }
+  section.hotels ul.share2 {
+    gap: 14px;
+    margin-top: 14px;
+  }
+  section.hotels-grid .hotels {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  section.hotels-grid .h-item img {
+    border-radius: 5px;
+  }
+  section.hotels-grid .h-item:nth-child(9)::after {
+    border-radius: 5px;
+  }
+  section.hotels-grid {
+    padding: 0 0 0px;
+  }
+  section.hotels-3 p {
+    font-size: 12px;
+    margin-bottom: 7px;
+    line-height: 200%;
+  }
+  section.hotels-3 ul.reserve {
+    margin-top: 14px;
+  }
+  section.hotels-3 ul.reserve li:first-child a {
+    margin-bottom: 10px;
+  }
+  section.giveaway3 {
+    padding: 20px 0;
+  }
+  section.giveaway3 form h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  section.giveaway3 form p {
+    font-size: 12px;
+    line-height: 22px;
+  }
+  section.giveaway3 form .form-row label {
+    font-size: 12px;
+    line-height: 24px;
+    margin-bottom: 5px;
+  }
+  section.giveaway3 form .form-row input[type='text'],
+  section.giveaway3 form .form-row select,
+  section.giveaway3 form .form-row input[type='date'] {
+    height: 40px;
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+  section.giveaway3 form .form-row {
+    margin-bottom: 16px;
+  }
+  section.giveaway3 form .form-row textarea {
+    height: 160px;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 10px 12px;
+  }
+  section.giveaway3 .col-lg-4.pt-5 {
+    padding-top: 10px !important;
+  }
+  section.giveaway3 .col-lg-8.pt-5 {
+    padding-top: 10px !important;
+  }
+  section.giveaway3 form .file-drop-area {
+    display: block;
+    padding: 16px;
+    text-align: center;
+  }
+  section.giveaway3 form .file-drop-area .file-msg h5 {
+    font-size: 16px;
+  }
+  section.giveaway3 form .file-drop-area .file-msg p {
+    font-size: 10px;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+  section.giveaway3 form .file-drop-area .fake-btn img {
+    margin-right: 7px;
+    width: 15px;
+  }
+  section.giveaway3 form .file-drop-area .fake-btn {
+    padding: 10px 15px;
+    font-size: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 34%;
+    margin-inline: auto;
+  }
+  section.giveaway3 form input[type='submit'] {
+    margin-top: 10px;
+    display: block;
+    margin-inline: auto;
+  }
+  section.hotels-grid .h-item:nth-child(4) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 7;
+  }
+  section.hotels-grid .h-item:nth-child(5) {
+    grid-column-start: 3;
+    grid-column-end: -1;
+    grid-row-start: 5;
+    grid-row-end: 7;
+  }
+  .price-c .row {
+    flex-wrap: wrap;
+  }
+  .price-c {
+    overflow-x: hidden;
+  }
+  section.dashboard .price-c h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  section.pricing .row {
+    flex-wrap: wrap;
+  }
+  section.pricing {
+    overflow-x: hidden;
+    padding: 30px 0;
+  }
+  section.pricing .price-box {
+    margin-bottom: 30px;
+  }
+  section.pricing .price-box h4 {
+    font-size: 16px;
+    margin-top: 50px;
+  }
+  section.pricing .price-box ul.type::after {
+    bottom: 0px;
+  }
+}

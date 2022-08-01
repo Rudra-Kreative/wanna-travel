@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('property_types', function (Blueprint $table) {
-            $table->text('slug')->after('name')->unique();
+            $table->string('slug')->after('name')->unique();
         });
     }
 

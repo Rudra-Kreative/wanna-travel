@@ -1,0 +1,32 @@
+/* section.wanna3 p,
+section.wanna4 p {
+    height: 250px;
+    overflow: hidden;
+}
+section.wanna2 p {
+    height: 226px;
+    overflow: hidden;
+} */
+section.wanna3 {
+    padding-top: 80px;
+}
+footer .sub3 ul.links li a {
+    color: #000;
+    text-decoration: none;
+}
+/* section.wanna6 p {
+    height: 414px;
+    overflow: hidden;
+} */
+section.wanna2 .wanna-img img:first-child {
+    left: 0;
+    top: 100px !important;
+}
+/* section.wanna5 .wanna5-img-box1 .img-box-text h5 {
+    height: 80px;
+    overflow: hidden;
+} */
+
+.owl-carousel .owl-item img {
+    height: 700px;
+}
