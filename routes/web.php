@@ -4,6 +4,7 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\user\PageController as UserPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('view',['page'=>'home']);
 });
 
 Route::get('/dashboard', function () {
@@ -64,3 +65,5 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
 
     });
 });
+
+Route::get('/{page:slug}',[UserPageController::class,'index'])->name('view');
