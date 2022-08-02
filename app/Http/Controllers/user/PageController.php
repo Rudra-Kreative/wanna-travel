@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Helper\Country;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -9,24 +10,31 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    use Country;
     public function index(Page $page)
     {
-        
-        if(!empty($page->contents))
-        {
-           
-            !empty($page->contents) ? $page->contents = json_decode(($page->contents)):'';
-            //dd($page);
 
-            if(!empty($page->slug) && $page->slug == 'home')
-            {
-                $faq = Page::where('slug','faq')->first();
-                !empty($faq->contents) ? $faq->contents = json_decode(($faq->contents)):'';
-                return view($this->getView($page),['data'=>$page,
-                'faq'=> $faq]);
-                
+        if (!empty($page->contents)) {
+
+            !empty($page->contents) ? $page->contents = json_decode(($page->contents)) : '';
+
+
+            if (!empty($page->slug) && $page->slug == 'home') {
+
+                if (!empty($page->contents->destination_country)) {
+
+                    foreach ($page->contents->destination_country as $index => $destination_country) {
+                        $page->contents->destination_country[$index] = $this->getCountryList()[array_search(strtoupper($destination_country), array_column($this->getCountryList(), 'code'))]['name'] ?? '';
+                    }
+                }
+                $faq = Page::where('slug', 'faq')->first();
+                !empty($faq->contents) ? $faq->contents = json_decode(($faq->contents)) : '';
+                return view($this->getView($page), [
+                    'data' => $page,
+                    'faq' => $faq
+                ]);
             }
-            return view($this->getView($page),['data'=>$page]);
+            return view($this->getView($page), ['data' => $page]);
         }
 
         throw new ModelNotFoundException();
@@ -36,18 +44,18 @@ class PageController extends Controller
     {
         switch ($page->slug) {
             case 'home':
-                 return 'home';
+                return 'home';
                 break;
             case 'is_wanna_for_me':
-                 return 'is-wanna';
+                return 'is-wanna';
                 break;
             case 'faq':
-                 return 'faq';
+                return 'faq';
                 break;
             case 'contact':
-                 return 'contact';
+                return 'contact';
                 break;
-            
+
             default:
                 # code...
                 break;

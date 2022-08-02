@@ -82,7 +82,8 @@
                             <a href="">
                                 <img src="{{ $desImage[0]->filePath ? URL('/' . $desImage[0]->filePath) : '' }}" alt="">
                             </a>
-                            <h6>{{ 'Test' }}</h6>
+                            
+                            <h6> {{ ($data->contents->destination_country[$index] ?? '') }}</h6>
                         </div>
                         @endforeach
                     @endif
