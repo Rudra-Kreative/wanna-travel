@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Helper\Country;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use Country;
     /**
      * Register any application services.
      *
@@ -32,6 +34,13 @@ class AppServiceProvider extends ServiceProvider
         });
         Blade::directive('excerptShort', function ($text) {
             return "<?php echo Str::limit($text, 100); ?>";
+        });
+
+        Blade::directive('getCountryName',function($code){
+           $index =  array_search(strtoupper($code) , array_column($this->getCountryList(),'code'));
+           $name = $this->getCountryList()[$index]['name'] ?? '';
+           return "<?php echo Test; ?>";
+           
         });
     }
 }
