@@ -1,4 +1,6 @@
 <x-app-layout>
+    <x-slot name="addOnCss">
+    </x-slot>
     <section class="pricing">
         <div class="container">
             <div class="row">
@@ -22,7 +24,7 @@
                                     @endif
                                 </ul>
                                 <a href="#" class="detail">View All Details</a>
-                                <a href="" class="pm-btn {{ $plan->id == 2 ? 'select' : '' }}">Select</a>
+                                <a href="javascript:void(0)" class="planSelectBtn pm-btn {{ $plan->id == 2 ? 'select' : '' }}">Select</a>
                             </div>
                         </div>
                     @endforeach
@@ -30,4 +32,8 @@
             </div>
         </div>
     </section>
+
+    <x-slot name="addOnJs">
+        <script src="{{ asset('user/auth/js/pages/pricing-plan.js') }}"></script>
+    </x-slot>
 </x-app-layout>
