@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Helper\Country;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\Plan;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,15 @@ class PageController extends Controller
                     'faq' => $faq
                 ]);
             }
+
+            elseif ((!empty($page->slug) && $page->slug == 'plan')) {
+                $plans = Plan::with(['planFeatures'])->where('is_active',true)->get();
+                
+                return view($this->getView($page), [
+                    'data' => $page,
+                    'plans' => $plans
+                ]);
+            }
             return view($this->getView($page), ['data' => $page]);
         }
 
@@ -54,6 +64,10 @@ class PageController extends Controller
                 break;
             case 'contact':
                 return 'contact';
+                break;
+            case 'plan':
+
+                return 'pricing';
                 break;
 
             default:
