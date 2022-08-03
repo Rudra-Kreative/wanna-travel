@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <x-slot name="addOnCss">
+    </x-slot>
     <section class="faq-home welcome-home">
         <img src="{{ asset('user/guest/images/faq-bg.png') }}" alt="">
         <h2>Frequently Asked Questions</h2>
@@ -22,5 +24,6 @@
             </div>
         </div>
     </section>
-
+    <x-slot name="addOnJs">
+    </x-slot>
 </x-guest-layout>

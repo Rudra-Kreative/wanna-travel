@@ -11,11 +11,14 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @include('layouts.css.common-css')
+        {{ $addOnCss }}
     </head>
     <body>
+        <x-common.ajax-loader-one />
         @include('layouts.guest.header')
             {{ $slot }}
         @include('layouts.guest.footer')
         @include('layouts.js.common-js')
+        {{ $addOnJs }}
     </body>
 </html>

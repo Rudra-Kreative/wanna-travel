@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <x-slot name="addOnCss">
+    </x-slot>
     <section class="propertes welcome-home">
         <img src="{{ asset('user/guest/images/contact-bg.png') }}" alt="">
         <h2>Contact Us</h2>
@@ -8,30 +10,30 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h3>{{ $data->contents[0]->heading ?? '' }}</h3>
-                    <form action="">
+                    <form id="enquiry-form" name='enquiry-form' action="javscript:void(0)" data-action="{{ route('contact.store') }}">
                         <div class="row">
                             <div class="col-md-6 col-6 form-row">
                                 <label for="">NAME </label>
-                                <input type="text" name="" id="" placeholder="fIRST NAME">
+                                <input type="text" name="fname" id="fname" placeholder="fIRST NAME">
                             </div>
                             <div class="col-md-6 col-6 form-row">
                                 <label for=""> </label>
-                                <input type="text" name="" id="" placeholder="Last NAME">
+                                <input type="text" name="lname" id="lname" placeholder="Last NAME">
                             </div>
                             <div class="col-md-12 form-row">
                                 <label for="">Email</label>
-                                <input type="email" placeholder="example@xyz.com">
+                                <input type="email" name="email" id="email" placeholder="example@xyz.com">
                             </div>
                             <div class="col-md-12 form-row">
                                 <label for="">Subject</label>
-                                <input type="text">
+                                <input type="text" name="subject" id="subject">
                             </div>
                             <div class="col-md-12 form-row">
                                 <label for="">Message</label>
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                <textarea name="message" id="message" cols="30" rows="10"></textarea>
                             </div>
                         </div>
-                        <input type="submit" value="submit" class="pm-btn">
+                        <input type="button" value="submit" class="pm-btn" id="enquiryButton">
                     </form>
                 </div>
                 <div class="col-lg-6">
@@ -43,4 +45,7 @@
             </div>
         </div>
     </section>
+    <x-slot name="addOnJs">
+        <script src="{{ asset('user/guest/js/pages/contact.js') }}"></script>
+    </x-slot>
 </x-guest-layout>

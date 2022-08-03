@@ -1,5 +1,6 @@
 <x-guest-layout>
-
+    <x-slot name="addOnCss">
+    </x-slot>
     <section class="home-sec">
         <div class="owl-carousel owl-theme home-slider">
             @if(!empty($data->contents->banner_media))
@@ -137,4 +138,6 @@
             </div>
         </div>
     </section>
+    <x-slot name="addOnJs">
+    </x-slot>
 </x-guest-layout>

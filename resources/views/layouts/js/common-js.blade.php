@@ -1,8 +1,10 @@
 <script src="{{ asset('user/guest/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('user/guest/js/jquery.min.js') }}"></script>
 <script src="{{ asset('user/guest/js/jquery.slimNav_sk78.min.js') }}"></script>
+<script src="{{ asset('admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('user/guest/js/owl.carousel.js') }}"></script>
 <script src="{{ asset('user/guest/js/custom.js') }}"></script>
+<script src="{{ asset('user/common/js/common.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 $('#navigation nav').slimNav_sk78();

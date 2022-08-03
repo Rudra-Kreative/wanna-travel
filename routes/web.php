@@ -4,6 +4,7 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\user\GuestEnqueryController;
 use App\Http\Controllers\user\PageController as UserPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,3 +68,4 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
 });
 
 Route::get('/{page:slug}',[UserPageController::class,'index'])->name('view');
+Route::post('/contact/store',[GuestEnqueryController::class,'store'])->name('contact.store');
