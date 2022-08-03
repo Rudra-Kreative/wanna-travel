@@ -1,5 +1,16 @@
 <x-guest-layout>
     <x-slot name="addOnCss">
+        <style>
+            .swal2-container.swal2-top-end>.swal2-popup,
+            .swal2-container.swal2-top-right>.swal2-popup {
+                grid-column: 3;
+                align-self: start;
+                justify-self: end;
+                position: fixed;
+                top: 10px;
+                width: 22% !important;
+            }
+        </style>
     </x-slot>
     <section class="propertes welcome-home">
         <img src="{{ asset('user/guest/images/contact-bg.png') }}" alt="">

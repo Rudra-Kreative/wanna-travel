@@ -111,6 +111,27 @@
                     
                 </ul>
             </li>
+
+            <li class="nav-item ">
+                <a href="#" class="nav-link ">
+                    <i class="fas fa-users-cog"></i>
+                    <p>
+                        Site Management
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.site-management.enquiry.view') }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Enquiry Management</p>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </li>
            
         </ul>
     </nav>

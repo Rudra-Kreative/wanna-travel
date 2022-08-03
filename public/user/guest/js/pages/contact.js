@@ -11,31 +11,32 @@ $(document).on("click", "#enquiryButton", function () {
         Toast.fire({
             icon: "error",
             title: "Enter your first name",
-            position: "bottom-end",
+            // position: "bottom-end",
+            // timer:500000000000
         });
     } else if (lname == "" || lname == undefined) {
         Toast.fire({
             icon: "error",
             title: "Enter your last name",
-            position: "bottom-end",
+            // position: "bottom-end",
         });
     } else if (email == "" || email == undefined || !emailRegx.test(email)) {
         Toast.fire({
             icon: "error",
             title: "Enter an valid email address",
-            position: "bottom-end",
+            // position: "bottom-end",
         });
     } else if (subject == "" || subject == undefined) {
         Toast.fire({
             icon: "error",
             title: "Enter a subject",
-            position: "bottom-end",
+            // position: "bottom-end",
         });
     } else if (enquery == "" || enquery == undefined) {
         Toast.fire({
             icon: "error",
             title: "Please enter message",
-            position: "bottom-end",
+            // position: "bottom-end",
         });
     } else {
         var dataTarget = $("#enquiry-form").attr("data-action");
