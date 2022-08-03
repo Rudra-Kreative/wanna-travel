@@ -30,3 +30,10 @@ section.wanna2 .wanna-img img:first-child {
 .owl-carousel .owl-item img {
     height: 700px;
 }
+
+section.contact form input[type="email"] {
+	text-transform: none !important;
+}
+section.contact form input[type=button]:hover {
+    color: #fff;
+}

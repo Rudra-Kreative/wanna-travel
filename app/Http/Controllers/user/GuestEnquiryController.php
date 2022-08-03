@@ -8,7 +8,7 @@ use App\Models\GuestEnquery;
 use Exception;
 use Illuminate\Http\Request;
 
-class GuestEnqueryController extends Controller
+class GuestEnquiryController extends Controller
 {
     
     public function store(Request $request)

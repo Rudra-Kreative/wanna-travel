@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Administrator\GuestEnquiryController as AdministratorGuestEnquiryController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\user\GuestEnqueryController;
+use App\Http\Controllers\user\GuestEnquiryController;
 use App\Http\Controllers\user\PageController as UserPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,7 +67,14 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
         Route::put('/{page:slug}/update',[PageController::class,'update'])->name('update');
 
     });
+
+    //site management
+    Route::prefix('site')->name('site-management.')->group(function(){
+        Route::prefix('enquiry')->name('enquiry.')->group(function(){
+            Route::get('/',[AdministratorGuestEnquiryController::class,'index'])->name('view');
+        });
+    });
 });
 
 Route::get('/{page:slug}',[UserPageController::class,'index'])->name('view');
-Route::post('/contact/store',[GuestEnqueryController::class,'store'])->name('contact.store');
+Route::post('/contact/store',[GuestEnquiryController::class,'store'])->name('contact.store');
