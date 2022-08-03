@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <x-slot name="addOnCss">
+    </x-slot>
     <section class="iswanna-home welcome-home">
         <img src="{{ asset('user/guest/images/iswanna-bg.png') }}" alt="">
         <h2>Is WANAH For Me?</h2>
@@ -27,4 +29,6 @@
     @endforeach
 
     <a href="javascript:void(0)" class="pm-btn check"> Check out our FAQ's</a>
+    <x-slot name="addOnJs">
+    </x-slot>
 </x-guest-layout>
