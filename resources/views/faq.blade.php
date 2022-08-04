@@ -16,7 +16,7 @@
                         @if (!empty($content->is_active) && ($content->is_active == 'true'))
                         <h4 class="accordion-toggle">{{ $content->ques ?? '' }} </h4>
                         <div class="accordion-content" style="display: {{ $index == 0 ? 'block' : 'none'}}">
-                            <p>{{ $content->answer ?? '' }}</p>
+                            <p>{!! $content->answer ?? '' !!}</p>
                         </div>
                         @endif
                     @endforeach
