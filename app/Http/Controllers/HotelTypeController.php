@@ -23,14 +23,8 @@ class HotelTypeController extends Controller
         $this->validate($request, [
             'name' => ['required'],
             'slug' => ['nullable', 'unique:hotel_types,slug'],
-            'desc' => ['required'],
-            'avatar' => ['nullable', 'mimetypes:image/bmp,image/gif,image/png,image/jpeg,image/webp', 'max:50048']
-        ]);
-
-
-        if ($request->hasFile('avatar') && ($request->file('avatar') instanceof UploadedFile)) {
-            $fileData = $this->uploads($request->file('avatar'), 'hotels/types/');
-        }
+            'desc' => ['required']    
+            ]);
 
         $res = [
             'key' => 'success',
@@ -41,8 +35,7 @@ class HotelTypeController extends Controller
             $hotelTypeData = HotelType::create([
                 'name' => $request->name,
                 'slug' => !empty($request->slug) ? $request->slug : Str::slug($request->name . Str::random(5), '-'),
-                'desc' => $request->desc,
-                'avatar' => $fileData['filePath'] ?? null
+                'desc' => $request->desc
 
             ]);
 
@@ -66,15 +59,116 @@ class HotelTypeController extends Controller
         }
 
 
-        return view(
-            'administrator.hotel.type.index',
-            [
-                'hotelTypes' => $this->getAllHotelTypes(),
-                'res' => $res
-            ]
-        );
+        return redirect()->route('administrator.hotel.type.home')->with($res['key'], $res['msg']);
     }
 
+    public function edit(HotelType $hotelType)
+    {
+        if (!empty($hotelType->id)) {
+            return [
+                'data' => $hotelType,
+                'res' => [
+                    'key' => 'success',
+                    'msg' => 'Successfully fetched'
+                ]
+            ];
+        } else {
+            return [
+                'data' => '',
+                'res' => [
+                    'key' => 'success',
+                    'msg' => 'Not found'
+                ]
+            ];
+        }
+    }
+
+    public function update(HotelType $hotelType, Request $request)
+    {
+        $this->validate($request, [
+            'name' => ['required'],
+            'desc' => ['required']
+        ]);
+
+
+        if(!empty($hotelType->id))
+        {
+            try {
+                $hotelType->name = $request->name;
+                $hotelType->desc = $request->desc;
+
+                $isUpdated = $hotelType->save();
+
+                if($isUpdated)
+                {
+                    $res = [
+                        'key' => 'success',
+                        'msg' => 'Hotel type has been updated successfully.'
+                    ];
+                }
+                else
+                {
+                    $res = [
+                        'key' => 'fail',
+                        'msg' => 'Hotel type could not be updated.'
+                    ];
+                }
+            } catch (Exception $e) {
+                $res = [
+                    'key' => 'fail',
+                    'msg' => 'Hotel type could not be updated.'
+                ];
+            }
+
+
+        }
+        else
+        {
+            $res = [
+                'key' => 'fail',
+                'msg' => 'Hotel type could not be updated.'
+            ];
+        }
+
+           return [
+            'data' => $this->getAllHotelTypes(),
+            'res' => $res
+        ];
+    }
+
+    public function destroy(HotelType $hotelType)
+    {
+        $res = [
+            'key' => 'success',
+            'msg' => 'Hotel type has been deleted successfully.'
+        ];
+
+        try {
+            $hotelType->delete();
+
+            if ($hotelType->trashed()) {
+                $res = [
+                    'key' => 'success',
+                    'msg' => 'Hotel type has been deleted successfully.'
+                ];
+            } else {
+                $res = [
+                    'key' => 'fail',
+                    'msg' => 'Hotel type could not be deleted.'
+                ];
+            }
+        } catch (Exception $e) {
+            $res = [
+                'key' => 'fail',
+                'msg' => 'Hotel type could not be deleted.'
+            ];
+        }
+
+        return [
+            'data' => $this->getAllHotelTypes(),
+            'res' => $res
+        ];
+    }
     public function getAllHotelTypes()
     {
         return HotelType::where('is_active',true)->orderBy('created_at','DESC')->get();

@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('contact_name');
-            $table->foreignId('hotel_type_id')->constrained('hotel_types','id')->cascadeOnDelete();
+            $table->foreignId('property_type_id')->constrained('property_types','id');
+            $table->string('hotel_type_id');
+            $table->string('amenity_id');
+            $table->string('star_rating');
             $table->string('phone');
             $table->string('alternate_phone')->nullable();
             $table->text('address');
@@ -26,8 +29,8 @@ return new class extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('zip');
-            $table->boolean('is_active');
-            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
+            $table->boolean('is_active')->default(true);
+            $table->morphs('creatable');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('property_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('desc');
+            $table->string('avatar')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->string('hotel_type');
             $table->softDeletes();
             $table->timestamps();
         });
