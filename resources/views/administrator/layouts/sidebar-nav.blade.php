@@ -41,27 +41,34 @@
                 <a href="#" class="nav-link ">
                     <i class="fas fa-hotel"></i>
                     <p>
-                        Hotels
+                        Hotel Management
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
 
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('administrator.hotel.type.home') }}" class="nav-link">
-                            <i class="fas fa-building"></i>
-                            <p>Type</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('administrator.hotel.property.home') }}" class="nav-link">
-                            <i class="fas fa-door-closed"></i>
+                            <i class="fas fa-angle-double-right"></i>
                             <p>Property Type</p>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('administrator.hotel.type.home') }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Hotel Type</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.hotel.amenity.home') }}" class="nav-link">
+                            <i class="fas fa-angle-double-right"></i>
+                            <p>Amenity</p>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
                         <a href="{{ route('administrator.hotel.home') }}" class="nav-link">
-                            <i class="fas fa-door-closed"></i>
+                            <i class="fas fa-angle-double-right"></i>
                             <p>List</p>
                         </a>
                     </li>

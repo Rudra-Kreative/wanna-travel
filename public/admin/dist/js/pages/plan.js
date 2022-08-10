@@ -169,7 +169,7 @@ function createPlan() {
 
     if (isValidated) {
         var dataTarget = $('#plan_form').attr('data-action');
-        alert(dataTarget);
+
         if (dataTarget !== '' && dataTarget !== 'undefined') {
 
             var payLoad = {};
@@ -185,7 +185,7 @@ function createPlan() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            console.log(payLoad)
+
             $.ajax({
                 type: "POST",
                 url: dataTarget,
@@ -324,7 +324,7 @@ function updatePlan() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            console.log(payLoad)
+
             $.ajax({
                 type: "POST",
                 url: dataTarget,

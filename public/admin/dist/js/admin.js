@@ -57,5 +57,9 @@ var Toast = Swal.mixin({
     timerProgressBar: true
   });
 
+  $(document).on('keyup paste drag drop','.numbersOnly',function () { 
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+
 
 

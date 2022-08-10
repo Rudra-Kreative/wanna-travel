@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\GuestEnquiryController as AdministratorGuestEnquiryController;
+use App\Http\Controllers\AmenityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelTypeController;
 use App\Http\Controllers\PageController;
@@ -43,18 +44,32 @@ Route::middleware('auth:administrator')->prefix('administrator')->name('administ
             
             Route::get('/',[HotelTypeController::class , 'index'])->name('home');
             Route::post('/store',[HotelTypeController::class , 'store'])->name('store');
-
+            Route::get('/{hotelType}/edit',[HotelTypeController::class , 'edit'])->name('edit');
+            Route::put('/{hotelType}/edit',[HotelTypeController::class , 'update'])->name('edit');
+            Route::delete('/{hotelType}/delete',[HotelTypeController::class , 'destroy'])->name('delete');
         });
 
         //property
         Route::prefix('/property')->name('property.')->group(function(){
             Route::get('/',[PropertyTypeController::class , 'index'])->name('home');
             Route::post('/store',[PropertyTypeController::class , 'store'])->name('store');
+            Route::get('/{propertyType}/edit',[PropertyTypeController::class , 'edit'])->name('edit');
+            Route::put('/{propertyType}/edit',[PropertyTypeController::class , 'update'])->name('update');
+            Route::delete('/{propertyType}/delete',[PropertyTypeController::class , 'destroy'])->name('delete');
+        });
+
+        //amenity
+        Route::prefix('/amenity')->name('amenity.')->group(function(){
+            Route::get('/',[AmenityController::class , 'index'])->name('home');
+            Route::post('/',[AmenityController::class , 'store'])->name('store');
         });
 
         
         //hotel
         Route::get('/',[HotelController::class,'index'])->name('home');
+        Route::get('/{hotel}/view',[HotelController::class,'getThisHotel'])->name('view');
+        Route::post('/store',[HotelController::class,'store'])->name('store');
+        Route::get('/{hotel}/images',[HotelController::class,'getHotelImages'])->name('getHotelImages');
 
     });
 
